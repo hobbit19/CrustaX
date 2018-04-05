@@ -1,0 +1,19 @@
+sudo: required
+dist: xenial
+
+before_install:
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt-5.10.1-xenial
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq qt510base;
+
+script:
+  - source /opt/qt510/bin/qt510-env.sh;
+  - cd src
+  - qmake -project
+  - qmake crusta.pro
+  - make
+
+notifications:
+  email: false
