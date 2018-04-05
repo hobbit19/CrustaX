@@ -28,13 +28,15 @@ SOURCES += \
     core/window/menubar.cpp \
     browserwindow.cpp \
     main.cpp \
-    core/sidepanel/sidepanel.cpp
+    core/sidepanel/sidepanel.cpp \
+    core/sidepanel/pushbutton.cpp
 
 HEADERS += \
     core/tabs/tabwidget.h \
     core/window/menubar.h \
     browserwindow.h \
-    core/sidepanel/sidepanel.h
+    core/sidepanel/sidepanel.h \
+    core/sidepanel/pushbutton.h
 
 RESOURCES += \
     resource.qrc

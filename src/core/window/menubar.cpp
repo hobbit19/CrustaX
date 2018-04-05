@@ -23,6 +23,7 @@ void MenuBar::createFileMenu()
 {
     QMenu* menu = addMenu("&File");
     menu->addAction("&New Tab");
+    menu->addAction("New &Split Tab");
     menu->addAction("New &Window");
     menu->addAction("New &Private Window");
     menu->addSeparator();
@@ -71,6 +72,12 @@ void MenuBar::createViewMenu()
     act_tabRight->setCheckable(true);
     QAction* act_tabBottom = mnu_tabs->addAction("&Bottom");
     act_tabBottom->setCheckable(true);
+
+    QMenu* mnu_split = menu->addMenu("Split Mode");
+    QAction* act_horizotnal = mnu_split->addAction("&Horizontal");
+    act_horizotnal->setCheckable(true);
+    QAction* act_vertical = mnu_split->addAction("&Vertical");
+    act_vertical->setCheckable(true);
 
     QAction* act_sidePanel = menu->addAction("Side Panel");
     act_sidePanel->setCheckable(true);
@@ -128,6 +135,9 @@ void MenuBar::createHelpMenu()
     menu->addAction("About &Crusta");
     QAction* act_aboutQt = menu->addAction("About &Qt");
     connect(act_aboutQt, &QAction::triggered, []{QApplication::aboutQt();});
+    menu->addSeparator();
+    menu->addAction("&Follow on Twitter");
+    menu->addAction("&Like a Feature");
     menu->addSeparator();
     menu->addAction("Check for &Updates");
 }

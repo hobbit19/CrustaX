@@ -17,6 +17,7 @@ class BrowserWindow : public QMainWindow
 public:
     BrowserWindow(QWidget *parent = 0);
     ~BrowserWindow();
+    void createSplitter();
 };
 
 #endif // CBROWSERWINDOW_H

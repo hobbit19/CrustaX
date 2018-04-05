@@ -1,6 +1,7 @@
 #include "browserwindow.h"
 
 #include <QSplitter>
+#include <QDebug>
 
 BrowserWindow::BrowserWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,12 +11,20 @@ BrowserWindow::BrowserWindow(QWidget *parent)
     m_tabwidget = new TabWidget(this);
     setMenuBar(m_menubar);
 
-    QSplitter* splitter = new QSplitter;
-    splitter->addWidget(m_sidepanel);
-    splitter->addWidget(m_tabwidget);
-    setCentralWidget(splitter);
+    layout()->setContentsMargins(0,0,0,0);
+
+    createSplitter();
 }
 
 BrowserWindow::~BrowserWindow()
 {
+}
+
+void BrowserWindow::createSplitter()
+{
+    QSplitter* splitter = new QSplitter(this);
+    splitter->setStretchFactor(0,0);
+    splitter->addWidget(m_sidepanel);
+    splitter->addWidget(m_tabwidget);
+    setCentralWidget(splitter);
 }
