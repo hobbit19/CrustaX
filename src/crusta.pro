@@ -26,15 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     core/tabs/tabwidget.cpp \
     core/window/menubar.cpp \
-    core/window/statusbar.cpp \
     browserwindow.cpp \
-    main.cpp
+    main.cpp \
+    core/sidepanel/sidepanel.cpp
 
 HEADERS += \
     core/tabs/tabwidget.h \
     core/window/menubar.h \
-    core/window/statusbar.h \
-    browserwindow.h
+    browserwindow.h \
+    core/sidepanel/sidepanel.h
 
 RESOURCES += \
     resource.qrc
