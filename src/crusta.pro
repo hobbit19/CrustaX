@@ -35,3 +35,6 @@ HEADERS += \
     core/window/menubar.h \
     core/window/statusbar.h \
     browserwindow.h
+
+RESOURCES += \
+    resource.qrc

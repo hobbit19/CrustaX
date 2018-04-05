@@ -1,5 +1,5 @@
-#ifndef BROWSERWINDOW_H
-#define BROWSERWINDOW_H
+#ifndef CBROWSERWINDOW_H
+#define CBROWSERWINDOW_H
 
 #include <QMainWindow>
 
@@ -12,4 +12,4 @@ public:
     ~BrowserWindow();
 };
 
-#endif // BROWSERWINDOW_H
+#endif // CBROWSERWINDOW_H
