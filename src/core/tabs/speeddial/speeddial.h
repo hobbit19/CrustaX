@@ -1,17 +1,16 @@
-#ifndef SPEEDDIAL_H
-#define SPEEDDIAL_H
+#ifndef CSPEEDDIAL_H
+#define CSPEEDDIAL_H
 
-#include <QWidget>
+#include <QGridLayout>
+#include <QScrollArea>
 
-class speeddial : public QWidget
+class SpeedDial : public QScrollArea
 {
-    Q_OBJECT
+    QGridLayout* m_gridlayout;
+    int m_cols;
 public:
-    explicit speeddial(QWidget *parent = nullptr);
-
-signals:
-
-public slots:
+    SpeedDial(QWidget *parent = nullptr);
+    void addDial(const QPixmap& pixmap, const QString& title, const QUrl& url);
 };
 
-#endif // SPEEDDIAL_H
+#endif // CSPEEDDIAL_H

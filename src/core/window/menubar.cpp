@@ -2,8 +2,9 @@
 
 #include <QApplication>
 
-MenuBar::MenuBar(QWidget *parent):
+MenuBar::MenuBar(BrowserWindow *parent):
     QMenuBar(parent)
+  , m_browserwindow(parent)
 {
     createMenus();
 }
@@ -81,6 +82,7 @@ void MenuBar::createViewMenu()
 
     QAction* act_sidePanel = menu->addAction("Side Panel");
     act_sidePanel->setCheckable(true);
+
     QAction* act_statusBar = menu->addAction("Status Bar");
     act_statusBar->setCheckable(true);
     menu->addSeparator();

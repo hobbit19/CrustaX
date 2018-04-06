@@ -1,17 +1,14 @@
-#ifndef DIAL_H
-#define DIAL_H
+#ifndef CDIAL_H
+#define CDIAL_H
 
 #include <QWidget>
 
 class Dial : public QWidget
 {
-    Q_OBJECT
+    int m_width;
+    int m_height;
 public:
-    explicit Dial(QWidget *parent = nullptr);
-
-signals:
-
-public slots:
+    Dial(const QPixmap &pixmap, const QString &title, const QUrl &url);
 };
 
-#endif // DIAL_H
+#endif // CDIAL_H

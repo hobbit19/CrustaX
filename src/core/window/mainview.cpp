@@ -3,8 +3,9 @@
 
 #include <QUrl>
 
-MainView::MainView(QWidget *parent):
+MainView::MainView(QMainWindow *parent):
     QSplitter(parent)
+  , m_browserwindow(parent)
 {
     setContentsMargins(0,0,0,0);
     addView(QUrl("url"));
@@ -12,13 +13,15 @@ MainView::MainView(QWidget *parent):
 
 void MainView::addView()
 {
-    TabWidget* tabwidget = new TabWidget;
+    TabWidget* tabwidget = new TabWidget(this, m_browserwindow);
     addWidget(tabwidget);
 }
 
 void MainView::addView(const QUrl& url)
 {
-    TabWidget* tabwidget = new TabWidget;
+    TabWidget* tabwidget = new TabWidget(this, m_browserwindow);
+    tabwidget->addView(url);
+    tabwidget->addView(url);
     tabwidget->addView(url);
     addWidget(tabwidget);
 }

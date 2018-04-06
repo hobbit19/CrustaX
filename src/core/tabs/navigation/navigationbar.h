@@ -26,6 +26,9 @@ class NavigationBar : public QWidget
     void showContextMenu(const QPoint& pos);
 public:
     NavigationBar(QWidget *parent = nullptr);
+    void loadStarted();
+    void loadFinished();
+    void loadProgress(const int& progress);
 };
 
 #endif // CNAVIGATIONBAR_H

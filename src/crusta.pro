@@ -38,7 +38,10 @@ SOURCES += \
     core/webview/webview.cpp \
     core/tabs/navigation/navigationbar.cpp \
     core/tabs/navigation/actionbutton.cpp \
-    core/tabs/navigation/addressbar.cpp
+    core/tabs/navigation/addressbar.cpp \
+    core/tabs/tabbar.cpp \
+    core/tabs/speeddial/speeddial.cpp \
+    core/tabs/speeddial/dial.cpp
 
 HEADERS += \
     core/tabs/tabwidget.h \
@@ -53,7 +56,10 @@ HEADERS += \
     core/tabs/navigation/navigationbar.h \
     core/tabs/navigation/actionbutton.h \
     core/cmacros.h \
-    core/tabs/navigation/addressbar.h
+    core/tabs/navigation/addressbar.h \
+    core/tabs/tabbar.h \
+    core/tabs/speeddial/speeddial.h \
+    core/tabs/speeddial/dial.h
 
 RESOURCES += \
     resource.qrc

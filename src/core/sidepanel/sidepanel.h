@@ -30,6 +30,7 @@ class SidePanel: public QWidget {
     void showContextMenu(const QPoint &pos);
 public:
     SidePanel(QWidget* parent = nullptr);
+    bool isPinned();
 };
 
 #endif // CSIDEPANEL_H

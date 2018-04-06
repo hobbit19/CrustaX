@@ -79,3 +79,8 @@ void SidePanel::showContextMenu(const QPoint& pos)
     menu->addAction("Panel Settings");
     menu->exec(mapToGlobal(pos));
 }
+
+bool SidePanel::isPinned()
+{
+    return m_isPinned;
+}

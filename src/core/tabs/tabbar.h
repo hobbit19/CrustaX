@@ -1,11 +1,23 @@
-#ifndef TABBAR_H
-#define TABBAR_H
+#ifndef CTABBAR_H
+#define CTABBAR_H
 
+#include <QTabBar>
 
-class TabBar : public QTabWidget
+#define TAB_HEIGHT 36
+#define PINNED_TAB_WIDTH 36
+#define TAB_WIDTH 200
+
+class TabBar : public QTabBar
 {
+    int m_pinnedcount;
+    int m_normalcount;
+
 public:
-    TabBar();
+    TabBar(QWidget* parent = nullptr);
+    int getWidth() const;
+    void tabAdded();
+protected:
+    QSize tabSizeHint(int index) const;
 };
 
-#endif // TABBAR_H
+#endif // CTABBAR_H
