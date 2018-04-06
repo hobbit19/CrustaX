@@ -1,3 +1,9 @@
 <RCC>
-    <qresource prefix="/"/>
+    <qresource prefix="/">
+        <file>res/icons/back.svg</file>
+        <file>res/icons/forward.svg</file>
+        <file>res/icons/top.svg</file>
+        <file>res/icons/home.svg</file>
+        <file>res/icons/refresh.svg</file>
+    </qresource>
 </RCC>

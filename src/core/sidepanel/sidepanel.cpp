@@ -1,3 +1,4 @@
+#include "../cmacros.h"
 #include "sidepanel.h"
 
 #include <QMenu>
@@ -7,7 +8,6 @@ SidePanel::SidePanel(QWidget *parent):
     QWidget(parent)
   , m_closePanelWidth(40)
   , m_openPanelWidth(100)
-  , m_isPanelOpen(false)
 {
     m_vboxlayout = new QVBoxLayout;
     m_vboxlayout->setSpacing(0);
@@ -33,7 +33,8 @@ SidePanel::SidePanel(QWidget *parent):
 
 void SidePanel::restoreState()
 {
-
+     m_isPanelOpen = false;
+     m_isPinned = true;
 }
 
 void SidePanel::saveState()
@@ -56,7 +57,7 @@ void SidePanel::createAPanels()
 void SidePanel::createBPanels()
 {
     m_vboxlayout->addWidget(m_addPanelButton);
-    m_vboxlayout->addWidget(new QWidget); // spacer
+    m_vboxlayout->addWidget(FLEXIBLE_SPACE);
 }
 
 void SidePanel::showContextMenu(const QPoint& pos)
@@ -72,6 +73,9 @@ void SidePanel::showContextMenu(const QPoint& pos)
     menu->addAction("Reload All");
     menu->addAction("Open All in Tabs");
     menu->addSeparator();
+    if (m_isPinned) {
+        menu->addAction("Unpin Panel");
+    }
     menu->addAction("Panel Settings");
     menu->exec(mapToGlobal(pos));
 }

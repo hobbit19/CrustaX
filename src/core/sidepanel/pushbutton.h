@@ -6,7 +6,7 @@
 class PushButton: public QPushButton
 {
 public:
-    PushButton(QWidget* parent = 0);
+    PushButton(QWidget* parent = nullptr);
 };
 
 #endif // CPUSHBUTTON_H

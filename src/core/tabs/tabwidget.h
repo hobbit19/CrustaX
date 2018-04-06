@@ -5,7 +5,8 @@
 
 class TabWidget: public QTabWidget {
 public:
-    TabWidget(QWidget* parent = 0);
+    TabWidget(QWidget* parent = nullptr);
+    void addView(const QUrl& url);
 };
 
 #endif // CTABWIDGET_H

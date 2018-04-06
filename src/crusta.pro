@@ -6,10 +6,13 @@
 
 QT += core gui
 
-QT += widgets
+QT += widgets webengine webenginewidgets
 
 TARGET = crusta
 TEMPLATE = app
+
+target.path = /usr/local/bin/
+INSTALLS += target
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -29,14 +32,28 @@ SOURCES += \
     browserwindow.cpp \
     main.cpp \
     core/sidepanel/sidepanel.cpp \
-    core/sidepanel/pushbutton.cpp
+    core/sidepanel/pushbutton.cpp \
+    core/window/mainview.cpp \
+    core/tabs/webtab.cpp \
+    core/webview/webview.cpp \
+    core/tabs/navigation/navigationbar.cpp \
+    core/tabs/navigation/actionbutton.cpp \
+    core/tabs/navigation/addressbar.cpp
 
 HEADERS += \
     core/tabs/tabwidget.h \
     core/window/menubar.h \
     browserwindow.h \
     core/sidepanel/sidepanel.h \
-    core/sidepanel/pushbutton.h
+    core/sidepanel/pushbutton.h \
+    core/window/mainview.h \
+    core/tabs/webtab.h \
+    core/tabs/tabmacros.h \
+    core/webview/webview.h \
+    core/tabs/navigation/navigationbar.h \
+    core/tabs/navigation/actionbutton.h \
+    core/cmacros.h \
+    core/tabs/navigation/addressbar.h
 
 RESOURCES += \
     resource.qrc

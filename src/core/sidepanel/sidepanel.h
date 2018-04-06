@@ -11,6 +11,7 @@ class SidePanel: public QWidget {
     int m_closePanelWidth;
     int m_openPanelWidth;
     bool m_isPanelOpen;
+    bool m_isPinned;
 
     QVBoxLayout* m_vboxlayout;
 
@@ -28,7 +29,7 @@ class SidePanel: public QWidget {
 
     void showContextMenu(const QPoint &pos);
 public:
-    SidePanel(QWidget* parent = 0);
+    SidePanel(QWidget* parent = nullptr);
 };
 
 #endif // CSIDEPANEL_H

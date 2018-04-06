@@ -13,7 +13,7 @@ class MenuBar: public QMenuBar {
     void createToolsMenu();
     void createHelpMenu();
 public:
-    MenuBar(QWidget* parent = 0);
+    MenuBar(QWidget* parent = nullptr);
 };
 
 #endif // CMENUBAR_H
