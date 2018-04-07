@@ -1,20 +1,27 @@
 sudo: required
 dist: xenial
 language: cpp
+cache: ccache
 
 before_install:
   - sudo add-apt-repository --yes ppa:beineri/opt-qt-5.10.1-xenial
-  - sudo apt-get update -qq
+  - sudo apt update -qq
 
 install:
-  - sudo apt-get install -qq qt510base;
+  - sudo apt install -qq qt510base
+  - sudo apt install -qq qt510tools 
+  - sudo apt install -qq qt510script 
+  - sudo apt install -qq qt510webengine
+  - sudo apt install -qq qt510declarative
+  - sudo apt install -qq qt510x11extras
+  - sudo apt install -qq libgl1-mesa-dev
 
 script:
-  - source /opt/qt510/bin/qt510-env.sh;
-  - cd src
-  - qmake -project
-  - qmake crusta.pro
-  - make
+  - source /opt/qt510/bin/qt510-env.sh
+  - mkdir _build
+  - cd _build
+  - qmake ..
+  - make -j `nproc`
 
 notifications:
   email: false
