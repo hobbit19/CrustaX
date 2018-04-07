@@ -7,14 +7,15 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq qt510base;
+  - sudo apt-get install -qq qt510base
+  - sudo apt-get install -qq qt510tools qt510script qt510webengine qt510webchannel
 
 script:
-  - source /opt/qt510/bin/qt510-env.sh;
-  - cd src
-  - qmake -project
-  - qmake crusta.pro
-  - make
+  - source /opt/qt510/bin/qt510-env.sh
+  - mkdir _build
+  - cd _build
+  - qmake ..
+  - make -j 4
 
 notifications:
   email: false
