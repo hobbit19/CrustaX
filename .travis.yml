@@ -12,8 +12,8 @@ install:
   - sudo apt install -qq qt510tools 
   - sudo apt install -qq qt510script 
   - sudo apt install -qq qt510webengine
-  - sudo apt install -qq qt59declarative
-  - sudo apt install -qq qt59x11extras
+  - sudo apt install -qq qt510declarative
+  - sudo apt install -qq qt510x11extras
 
 script:
   - source /opt/qt510/bin/qt510-env.sh
