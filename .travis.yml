@@ -8,16 +8,19 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq qt510base
-  - sudo apt-get install -qq qt510tools qt510script qt510webengine
-  - sudo apt-get install -qq libegl1-mesa-dev
+  - sudo apt install -qq qt510base
+  - sudo apt install -qq qt510tools 
+  - sudo apt install -qq qt510script 
+  - sudo apt install -qq qt510webengine
+  - sudo apt install -qq qt59declarative
+  - sudo apt install -qq qt59x11extras
 
 script:
   - source /opt/qt510/bin/qt510-env.sh
   - mkdir _build
   - cd _build
   - qmake ..
-  - make -j 4
+  - make -j `nproc`
 
 notifications:
   email: false
