@@ -1,13 +1,11 @@
 #ifndef CMENUBAR_H
 #define CMENUBAR_H
 
-#include "../../browserwindow.h"
-
 #include <QMainWindow>
 #include <QMenuBar>
 
 class MenuBar: public QMenuBar {
-    BrowserWindow* m_browserwindow;
+    QMainWindow* m_browserwindow;
 
     void createMenus();
     void createFileMenu();
@@ -18,7 +16,7 @@ class MenuBar: public QMenuBar {
     void createToolsMenu();
     void createHelpMenu();
 public:
-    MenuBar(BrowserWindow *parent = nullptr);
+    MenuBar(QMainWindow *parent = nullptr);
 };
 
 #endif // CMENUBAR_H

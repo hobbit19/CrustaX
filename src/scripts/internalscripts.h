@@ -1,11 +1,13 @@
-#ifndef INTERNALSCRIPTS_H
-#define INTERNALSCRIPTS_H
+#ifndef CINTERNALSCRIPTS_H
+#define CINTERNALSCRIPTS_H
 
+#include <QString>
 
 class InternalScripts
 {
 public:
     InternalScripts();
+    static QString getFramework();
 };
 
-#endif // INTERNALSCRIPTS_H
+#endif // CINTERNALSCRIPTS_H

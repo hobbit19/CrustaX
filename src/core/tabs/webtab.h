@@ -18,6 +18,7 @@ class WebTab : public QWidget
     WebView* m_webview;
     QVBoxLayout* m_vboxlayout;
     QStackedWidget* m_stackedwidget;
+    void loadFinished();
     void titleChanged(const QString& title);
     void iconChanged(const QIcon& icon);
 

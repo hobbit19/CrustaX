@@ -2,10 +2,10 @@
 #include "actionbutton.h"
 
 ActionButton::ActionButton(QWidget *parent):
-    QPushButton(parent)
+    QToolButton(parent)
   , m_isPresent(true)
 {
-    setFlat(true);
+    setAutoRaise(true);
 }
 
 void ActionButton::setFillIcon(const QIcon &icon)

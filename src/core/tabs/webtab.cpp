@@ -1,4 +1,5 @@
 #include "../cmacros.h"
+#include "../../scripts/internalscripts.h"
 #include "webtab.h"
 
 #include <QApplication>
@@ -28,7 +29,7 @@ WebTab::WebTab(TabWidget *parent):
     setLayout(m_vboxlayout);
 
     connect(m_webview, &WebView::loadStarted, m_navigationbar, &NavigationBar::loadStarted);
-    connect(m_webview, &WebView::loadFinished, m_navigationbar, &NavigationBar::loadFinished);
+    connect(m_webview, &WebView::loadFinished, this, &WebTab::loadFinished);
     connect(m_webview, &WebView::loadProgress, m_navigationbar, &NavigationBar::loadProgress);
     connect(m_webview, &WebView::titleChanged, this, &WebTab::titleChanged);
     connect(m_webview, &WebView::iconChanged, this, &WebTab::iconChanged);
@@ -37,6 +38,14 @@ WebTab::WebTab(TabWidget *parent):
 void WebTab::loadUrl(const QUrl& url)
 {
     Q_UNUSED(url);
+}
+
+void WebTab::loadFinished()
+{
+    m_navigationbar->loadFinished();
+
+    QString src = InternalScripts::getFramework();
+    m_webview->page()->runJavaScript(src, [](const QVariant &v) { qDebug() << v.toList(); });
 }
 
 void WebTab::titleChanged(const QString &title)

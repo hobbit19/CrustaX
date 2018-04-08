@@ -6,6 +6,7 @@
 #define TAB_HEIGHT 36
 #define PINNED_TAB_WIDTH 36
 #define TAB_WIDTH 200
+#define MINIMUM_TAB_WIDTH 100
 
 class TabBar : public QTabBar
 {

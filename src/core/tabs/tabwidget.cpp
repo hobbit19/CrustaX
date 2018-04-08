@@ -56,6 +56,7 @@ void TabWidget::tabTitleChanged(int index, const QString &title, bool isPinned)
     } else {
         setTabText(index, title);
     }
+    setTabToolTip(index, title);
     if (m_browserwindow) {
         m_browserwindow->setWindowTitle(title + tr(" - Crusta"));
     }
@@ -71,14 +72,16 @@ void TabWidget::handleCurrentChanged(int index)
 
 void TabWidget::addNewTabButton()
 {
+    m_newtabbutton->setIcon(QIcon(":/res/icons/add.svg"));
+    m_newtabbutton->setFlat(true);
     m_newtabbutton->setFixedSize(TAB_HEIGHT - 2 * ADDBUTTON_PADDING, TAB_HEIGHT - 2 * ADDBUTTON_PADDING);
-    m_newtabbutton->move(m_tabbar->getWidth(), ADDBUTTON_PADDING);
+    m_newtabbutton->move(m_tabbar->getWidth(), m_tabbar->geometry().top() + ADDBUTTON_PADDING);
     connect(m_newtabbutton, &QPushButton::clicked, this, [this]{addView();});
 }
 
 void TabWidget::replaceNewTabButton()
 {
-    m_newtabbutton->move(m_tabbar->getWidth(), ADDBUTTON_PADDING);
+    m_newtabbutton->move(m_tabbar->getWidth(), m_tabbar->geometry().top() + ADDBUTTON_PADDING);
 }
 
 void TabWidget::handleTabsChanged()
@@ -90,4 +93,6 @@ void TabWidget::resizeEvent(QResizeEvent *event)
 {
     QTabWidget::resizeEvent(event);
     m_tabbar->setMaximumWidth(width() - TAB_HEIGHT + 2 * ADDBUTTON_PADDING);
+    m_tabbar->setMinimumWidth(m_tabbar->getWidth());
+    replaceNewTabButton();
 }

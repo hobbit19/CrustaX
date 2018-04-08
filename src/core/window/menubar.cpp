@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-MenuBar::MenuBar(BrowserWindow *parent):
+MenuBar::MenuBar(QMainWindow *parent):
     QMenuBar(parent)
   , m_browserwindow(parent)
 {
@@ -95,7 +95,7 @@ void MenuBar::createViewMenu()
 
 void MenuBar::createHistoryMenu()
 {
-    QMenu* menu = addMenu("&History");
+    QMenu* menu = addMenu("Hi&story");
     menu->addAction("&Back");
     menu->addAction("&Forward");
     menu->addAction("&Home");

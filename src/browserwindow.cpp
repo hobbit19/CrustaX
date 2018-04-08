@@ -15,7 +15,7 @@ BrowserWindow::BrowserWindow(QWidget *parent)
 
     layout()->setContentsMargins(0,0,0,0);
 
-    createSplitter();
+    createSplitter();    
 }
 
 BrowserWindow::~BrowserWindow()

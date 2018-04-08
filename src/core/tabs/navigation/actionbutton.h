@@ -1,9 +1,9 @@
 #ifndef CACTIONBUTTON_H
 #define CACTIONBUTTON_H
 
-#include <QPushButton>
+#include <QToolButton>
 
-class ActionButton: public QPushButton
+class ActionButton: public QToolButton
 {
     int m_side;
     bool m_isPresent;
