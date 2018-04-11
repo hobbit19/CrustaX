@@ -3,5 +3,5 @@
 WebView::WebView(QWidget *parent):
     QWebEngineView(parent)
 {
-
+    setObjectName("webview");
 }

@@ -7,6 +7,8 @@
 BrowserWindow::BrowserWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    setObjectName("browserwindow");
+
     m_sidepanel = new SidePanel(this);
     m_mainview = new MainView(this);
 

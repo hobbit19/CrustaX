@@ -9,6 +9,8 @@ SidePanel::SidePanel(QWidget *parent):
   , m_closePanelWidth(40)
   , m_openPanelWidth(100)
 {
+    setObjectName("sidepanel");
+
     m_vboxlayout = new QVBoxLayout;
     m_vboxlayout->setSpacing(0);
     m_vboxlayout->setContentsMargins(0,0,0,0);

@@ -7,6 +7,8 @@ MainView::MainView(QMainWindow *parent):
     QSplitter(parent)
   , m_browserwindow(parent)
 {
+    setObjectName("mainview");
+
     setContentsMargins(0,0,0,0);
     addView(QUrl("url"));
 }

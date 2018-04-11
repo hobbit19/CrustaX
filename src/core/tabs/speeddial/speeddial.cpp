@@ -7,6 +7,8 @@ SpeedDial::SpeedDial(QWidget *parent):
     QScrollArea(parent)
   , m_cols(4)
 {
+    setObjectName("speeddial");
+
     m_gridlayout = new QGridLayout;
     m_gridlayout->setHorizontalSpacing(100);
     m_gridlayout->setVerticalSpacing(100);

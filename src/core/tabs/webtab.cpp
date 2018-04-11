@@ -9,8 +9,12 @@ WebTab::WebTab(TabWidget *parent):
   , m_tabwidget(parent)
   , m_isPinned(false)
 {
+    setObjectName("webtab");
+
     m_navigationbar = new NavigationBar;
     m_speeddial = new SpeedDial;
+    m_splitter = new QSplitter;
+    m_panel = new Panel;
     m_webview = new WebView;
     m_vboxlayout = new QVBoxLayout;
     m_stackedwidget = new QStackedWidget;
@@ -22,7 +26,14 @@ WebTab::WebTab(TabWidget *parent):
     m_vboxlayout->addWidget(m_navigationbar);
 
     m_stackedwidget->addWidget(m_speeddial);
-    m_stackedwidget->addWidget(m_webview);
+    m_stackedwidget->addWidget(m_splitter);
+    m_splitter->setContentsMargins(0,0,0,0);
+    m_splitter->setMidLineWidth(0);
+    m_splitter->addWidget(m_panel);
+    // hide panel for now
+    //m_panel->hide();
+    m_splitter->addWidget(m_webview);
+    m_splitter->setStretchFactor(0, 0);
     m_stackedwidget->setCurrentIndex(1);
     m_vboxlayout->addWidget(m_stackedwidget);
 

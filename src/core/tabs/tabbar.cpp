@@ -6,6 +6,8 @@ TabBar::TabBar(QWidget *parent):
   , m_pinnedcount(0)
   , m_normalcount(0)
 {
+    setObjectName("tabbar");
+
     setDrawBase(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
 }

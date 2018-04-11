@@ -12,6 +12,8 @@ TabWidget::TabWidget(QWidget *parent, QMainWindow* browserwindow):
     QTabWidget(parent)
   , m_browserwindow(browserwindow)
 {
+    setObjectName("tabwidget");
+
     m_newtabbutton = new QPushButton(this);
     m_tabbar = new TabBar;
     setTabBar(m_tabbar);
@@ -72,6 +74,7 @@ void TabWidget::handleCurrentChanged(int index)
 
 void TabWidget::addNewTabButton()
 {
+    m_newtabbutton->setObjectName("add-tab-button");
     m_newtabbutton->setIcon(QIcon(":/res/icons/add.svg"));
     m_newtabbutton->setFlat(true);
     m_newtabbutton->setFixedSize(TAB_HEIGHT - 2 * ADDBUTTON_PADDING, TAB_HEIGHT - 2 * ADDBUTTON_PADDING);

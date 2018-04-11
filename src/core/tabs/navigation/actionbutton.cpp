@@ -5,6 +5,8 @@ ActionButton::ActionButton(QWidget *parent):
     QToolButton(parent)
   , m_isPresent(true)
 {
+    setObjectName("navigation-actionbutton");
+
     setAutoRaise(true);
 }
 

@@ -7,6 +7,8 @@ NavigationBar::NavigationBar(QWidget *parent):
     QWidget(parent)
   , m_height(NAVIGATIONBAR_HEIGHT)
 {
+    setObjectName("navigation-navigationbar");
+
     m_hboxlayout = new QHBoxLayout;
     m_backbutton = new ActionButton;
     m_forwardbutton = new ActionButton;

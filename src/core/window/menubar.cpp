@@ -6,6 +6,8 @@ MenuBar::MenuBar(QMainWindow *parent):
     QMenuBar(parent)
   , m_browserwindow(parent)
 {
+    setObjectName("menubar");
+
     createMenus();
 }
 

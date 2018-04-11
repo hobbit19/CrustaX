@@ -42,7 +42,9 @@ SOURCES += \
     src/core/tabs/tabbar.cpp \
     src/core/tabs/speeddial/speeddial.cpp \
     src/core/tabs/speeddial/dial.cpp \
-    src/scripts/internalscripts.cpp
+    src/scripts/internalscripts.cpp \
+    src/core/tabs/panel/panel.cpp \
+    src/core/tabs/panel/paneltitle.cpp
 
 HEADERS += \
     src/core/tabs/tabwidget.h \
@@ -61,7 +63,9 @@ HEADERS += \
     src/core/tabs/tabbar.h \
     src/core/tabs/speeddial/speeddial.h \
     src/core/tabs/speeddial/dial.h \
-    src/scripts/internalscripts.h
+    src/scripts/internalscripts.h \
+    src/core/tabs/panel/panel.h \
+    src/core/tabs/panel/paneltitle.h
 
 RESOURCES += \
     resource.qrc
