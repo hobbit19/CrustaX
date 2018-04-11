@@ -1,11 +1,17 @@
 #ifndef CMENUBAR_H
 #define CMENUBAR_H
 
+#include <QAction>
 #include <QMainWindow>
 #include <QMenuBar>
 
+class BrowserWindow;
+
 class MenuBar: public QMenuBar {
-    QMainWindow* m_browserwindow;
+    BrowserWindow* m_browserwindow;
+
+    QAction* act_sidePanel;
+    QAction* act_menubar;
 
     void createMenus();
     void createFileMenu();
@@ -15,8 +21,10 @@ class MenuBar: public QMenuBar {
     void createBookmarksMenu();
     void createToolsMenu();
     void createHelpMenu();
+
+    void aboutToShowViewMenu();
 public:
-    MenuBar(QMainWindow *parent = nullptr);
+    MenuBar(BrowserWindow *parent = nullptr);
 };
 
 #endif // CMENUBAR_H

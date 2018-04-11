@@ -1,8 +1,9 @@
+#include "../../browserwindow.h"
 #include "menubar.h"
 
 #include <QApplication>
 
-MenuBar::MenuBar(QMainWindow *parent):
+MenuBar::MenuBar(BrowserWindow *parent):
     QMenuBar(parent)
   , m_browserwindow(parent)
 {
@@ -34,7 +35,11 @@ void MenuBar::createFileMenu()
     menu->addAction("&Save Page");
     menu->addAction("Print");
     menu->addSeparator();
-    menu->addAction("Quit");
+    QAction* act_quit = menu->addAction("Quit");
+    act_quit->setShortcut(QKeySequence::Quit);
+    connect(act_quit, &QAction::triggered, [=]{
+        m_browserwindow->close();
+    });
 }
 
 void MenuBar::createEditMenu()
@@ -59,8 +64,15 @@ void MenuBar::createViewMenu()
     QMenu* menu = addMenu("&View");
 
     QMenu* mnu_toolbars = menu->addMenu("Toolbars");
-    QAction* act_menubar = mnu_toolbars->addAction("&Menubar");
+    act_menubar = mnu_toolbars->addAction("&Menubar");
     act_menubar->setCheckable(true);
+    connect(act_menubar, &QAction::triggered, [=]{
+        if (m_browserwindow->menuBar()->isVisible()) {
+            m_browserwindow->menuBar()->hide();
+        } else {
+            m_browserwindow->menuBar()->show();
+        }
+    });
     QAction* act_navigationBar = mnu_toolbars->addAction("&Navigation Bar");
     act_navigationBar->setCheckable(true);
     QAction* act_bookmarksBar = mnu_toolbars->addAction("&Bookmarks Bar");
@@ -82,8 +94,15 @@ void MenuBar::createViewMenu()
     QAction* act_vertical = mnu_split->addAction("&Vertical");
     act_vertical->setCheckable(true);
 
-    QAction* act_sidePanel = menu->addAction("Side Panel");
+    act_sidePanel = menu->addAction("Side Panel");
     act_sidePanel->setCheckable(true);
+    connect(act_sidePanel, &QAction::triggered, [=]{
+        if (m_browserwindow->sidePanel()->isVisible()) {
+            m_browserwindow->sidePanel()->hide();
+        } else {
+            m_browserwindow->sidePanel()->show();
+        }
+    });
 
     QAction* act_statusBar = menu->addAction("Status Bar");
     act_statusBar->setCheckable(true);
@@ -93,6 +112,23 @@ void MenuBar::createViewMenu()
     menu->addAction("&Reset Zoom");
     menu->addSeparator();
     menu->addAction("&Page Source");
+
+    connect(menu, &QMenu::aboutToShow, this, &MenuBar::aboutToShowViewMenu);
+}
+
+void MenuBar::aboutToShowViewMenu()
+{
+    if (m_browserwindow->menuBar()->isVisible()) {
+        act_menubar->setChecked(true);
+    } else {
+        act_menubar->setChecked(false);
+    }
+
+    if (m_browserwindow->sidePanel()->isVisible()) {
+        act_sidePanel->setChecked(true);
+    } else {
+        act_sidePanel->setChecked(false);
+    }
 }
 
 void MenuBar::createHistoryMenu()

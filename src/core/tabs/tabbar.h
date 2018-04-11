@@ -17,6 +17,7 @@ public:
     TabBar(QWidget* parent = nullptr);
     int getWidth() const;
     void tabAdded();
+    void tabRemoved(bool isPinned = false);
 protected:
     QSize tabSizeHint(int index) const;
 };

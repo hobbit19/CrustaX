@@ -31,7 +31,7 @@ WebTab::WebTab(TabWidget *parent):
     m_splitter->setMidLineWidth(0);
     m_splitter->addWidget(m_panel);
     // hide panel for now
-    //m_panel->hide();
+    m_panel->hide();
     m_splitter->addWidget(m_webview);
     m_splitter->setStretchFactor(0, 0);
     m_stackedwidget->setCurrentIndex(1);

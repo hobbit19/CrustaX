@@ -16,6 +16,8 @@ public:
     BrowserWindow(QWidget *parent = nullptr);
     ~BrowserWindow();
     void createSplitter();
+
+    MainView* mainView();
     SidePanel* sidePanel();
 };
 

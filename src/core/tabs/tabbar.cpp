@@ -42,3 +42,12 @@ void TabBar::tabAdded()
     // Pinned tab will never be added, its just converted
     m_normalcount ++;
 }
+
+void TabBar::tabRemoved(bool isPinned)
+{
+    if (isPinned) {
+        m_pinnedcount --;
+    } else {
+        m_normalcount --;
+    }
+}

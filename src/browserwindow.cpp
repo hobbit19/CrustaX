@@ -33,6 +33,11 @@ void BrowserWindow::createSplitter()
     setCentralWidget(splitter);
 }
 
+MainView* BrowserWindow::mainView()
+{
+    return m_mainview;
+}
+
 SidePanel* BrowserWindow::sidePanel()
 {
     return m_sidepanel;

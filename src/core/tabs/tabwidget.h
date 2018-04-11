@@ -17,15 +17,17 @@ class TabWidget: public QTabWidget {
     void handleCurrentChanged(int index);
     void addNewTabButton();
     void replaceNewTabButton();
-    QWidget *addViewHelper();
+    QWidget *addViewHelper(bool background);
     void resizeEvent(QResizeEvent* event);
+    void resizeTabbar();
 
 public:
     TabWidget(QWidget* parent = nullptr, QMainWindow *browserwindow = nullptr);
     ~TabWidget() {}
-    void addView();
-    void addView(const QUrl& url);
+    void addView(bool background = false);
+    void addView(const QUrl& url, bool background = false);
     void tabTitleChanged(int index, const QString& title, bool isPinned);
+    void closeTab(const int index);
 
 public slots:
     void handleTabsChanged();

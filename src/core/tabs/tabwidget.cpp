@@ -25,26 +25,30 @@ TabWidget::TabWidget(QWidget *parent, QMainWindow* browserwindow):
     addNewTabButton();
 
     connect(this, &TabWidget::currentChanged, this, &TabWidget::handleCurrentChanged);
+    connect(this, &TabWidget::tabCloseRequested, this, &TabWidget::closeTab);
     connect(this, SIGNAL(tabsChanged()), SLOT(handleTabsChanged()));
 }
 
-QWidget* TabWidget::addViewHelper()
+QWidget* TabWidget::addViewHelper(bool background)
 {
     WebTab* webtab = new WebTab(this);
-    addTab(webtab, TEXT_ON_NEW_TAB);
+    int newindex = addTab(webtab, TEXT_ON_NEW_TAB);
     m_tabbar->tabAdded();
+    if (!background) {
+        setCurrentIndex(newindex);
+    }
     emit tabsChanged();
     return webtab;
 }
 
-void TabWidget::addView()
+void TabWidget::addView(bool background)
 {
-    addViewHelper();
+    addViewHelper(background);
 }
 
-void TabWidget::addView(const QUrl &url)
+void TabWidget::addView(const QUrl &url, bool background)
 {
-    WebTab* webtab = dynamic_cast<WebTab*>(addViewHelper());
+    WebTab* webtab = dynamic_cast<WebTab*>(addViewHelper(background));
     if (!webtab) {
         return;
     }
@@ -89,13 +93,28 @@ void TabWidget::replaceNewTabButton()
 
 void TabWidget::handleTabsChanged()
 {
+    resizeTabbar();
     replaceNewTabButton();
 }
 
 void TabWidget::resizeEvent(QResizeEvent *event)
 {
     QTabWidget::resizeEvent(event);
+    resizeTabbar();
+    replaceNewTabButton();
+}
+
+void TabWidget::resizeTabbar()
+{
     m_tabbar->setMaximumWidth(width() - TAB_HEIGHT + 2 * ADDBUTTON_PADDING);
     m_tabbar->setMinimumWidth(m_tabbar->getWidth());
-    replaceNewTabButton();
+}
+
+void TabWidget::closeTab(const int index)
+{
+    widget(index)->deleteLater();
+    removeTab(index);
+    // TODO: pass if tab was pinned
+    m_tabbar->tabRemoved();
+    emit tabsChanged();
 }
