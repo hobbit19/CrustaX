@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=crusta %u
+MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Categories=Network;WebBrowser;
+Terminal=False
+Version=2.0
+Name=Crusta
+Comment=Access the internet
+GenericName=Web Browser
+Actions=New Window;New Incognito Window;
