@@ -4,6 +4,7 @@
 #include "webtab.h"
 
 #include <QKeyEvent>
+#include <QMouseEvent>
 
 #ifndef ADDBUTTON_PADDING
 #define ADDBUTTON_PADDING 4
@@ -137,5 +138,15 @@ void TabWidget::keyReleaseEvent(QKeyEvent *event)
         break;
     default:
         break;
+    }
+}
+
+void TabWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+    QTabWidget::mouseReleaseEvent(event);
+
+    if(event->button() == Qt::MiddleButton) {
+        int index = tabBar()->tabAt(event->pos());
+        closeTab(index);
     }
 }

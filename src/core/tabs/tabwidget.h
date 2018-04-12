@@ -24,6 +24,7 @@ class TabWidget: public QTabWidget {
     void resizeTabbar();
 
     void keyReleaseEvent(QKeyEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
 
 public:
     TabWidget(QWidget* parent = nullptr, BrowserWindow *browserwindow = nullptr);
