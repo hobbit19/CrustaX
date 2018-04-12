@@ -56,7 +56,6 @@ HEADERS += \
     src/core/sidepanel/pushbutton.h \
     src/core/window/mainview.h \
     src/core/tabs/webtab.h \
-    src/core/tabs/tabmacros.h \
     src/core/webview/webview.h \
     src/core/tabs/navigation/navigationbar.h \
     src/core/tabs/navigation/actionbutton.h \
@@ -71,3 +70,6 @@ HEADERS += \
 
 RESOURCES += \
     resource.qrc
+
+TRANSLATIONS += \
+    translations/crusta_es.ts

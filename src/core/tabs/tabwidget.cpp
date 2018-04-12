@@ -1,5 +1,4 @@
 #include "../../browserwindow.h"
-#include "tabmacros.h"
 #include "tabwidget.h"
 #include "webtab.h"
 

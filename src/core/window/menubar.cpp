@@ -25,19 +25,19 @@ void MenuBar::createMenus()
 
 void MenuBar::createFileMenu()
 {
-    QMenu* menu = addMenu("&File");
-    act_splittab = menu->addAction("New &Split Tab");
+    QMenu* menu = addMenu(tr("&File"));
+    act_splittab = menu->addAction(tr("New &Split Tab"));
     connect(act_splittab, &QAction::triggered, [=]{
         m_browserwindow->newSplitTab();
     });
-    menu->addAction("New &Window");
-    menu->addAction("New &Private Window");
+    menu->addAction(tr("New &Window"));
+    menu->addAction(tr("New &Private Window"));
     menu->addSeparator();
-    menu->addAction("&Open File");
-    menu->addAction("&Save Page");
-    menu->addAction("Print");
+    menu->addAction(tr("&Open File"));
+    menu->addAction(tr("&Save Page"));
+    menu->addAction(tr("Print"));
     menu->addSeparator();
-    QAction* act_quit = menu->addAction("Quit");
+    QAction* act_quit = menu->addAction(tr("Quit"));
     act_quit->setShortcut(QKeySequence::Quit);
     connect(act_quit, &QAction::triggered, [=]{
         m_browserwindow->close();
@@ -46,27 +46,27 @@ void MenuBar::createFileMenu()
 
 void MenuBar::createEditMenu()
 {
-    QMenu* menu = addMenu("&Edit");
-    menu->addAction("&Undo");
-    menu->addAction("&Redo");
+    QMenu* menu = addMenu(tr("&Edit"));
+    menu->addAction(tr("&Undo"));
+    menu->addAction(tr("&Redo"));
     menu->addSeparator();
-    menu->addAction("&Cut");
-    menu->addAction("C&opy");
-    menu->addAction("&Paste");
+    menu->addAction(tr("&Cut"));
+    menu->addAction(tr("C&opy"));
+    menu->addAction(tr("&Paste"));
     menu->addSeparator();
-    menu->addAction("&Select All");
-    menu->addAction("&Find In Page");
+    menu->addAction(tr("&Select All"));
+    menu->addAction(tr("&Find In Page"));
     menu->addSeparator();
-    menu->addAction("Permissions");
-    menu->addAction("Settings");
+    menu->addAction(tr("Permissions"));
+    menu->addAction(tr("Settings"));
 }
 
 void MenuBar::createViewMenu()
 {
-    QMenu* menu = addMenu("&View");
+    QMenu* menu = addMenu(tr("&View"));
 
-    QMenu* mnu_toolbars = menu->addMenu("Toolbars");
-    act_menubar = mnu_toolbars->addAction("&Menubar");
+    QMenu* mnu_toolbars = menu->addMenu(tr("Toolbars"));
+    act_menubar = mnu_toolbars->addAction(tr("&Menubar"));
     act_menubar->setCheckable(true);
     connect(act_menubar, &QAction::triggered, [=]{
         if (m_browserwindow->menuBar()->isVisible()) {
@@ -75,28 +75,28 @@ void MenuBar::createViewMenu()
             m_browserwindow->menuBar()->show();
         }
     });
-    QAction* act_navigationBar = mnu_toolbars->addAction("&Navigation Bar");
+    QAction* act_navigationBar = mnu_toolbars->addAction(tr("&Navigation Bar"));
     act_navigationBar->setCheckable(true);
-    QAction* act_bookmarksBar = mnu_toolbars->addAction("&Bookmarks Bar");
+    QAction* act_bookmarksBar = mnu_toolbars->addAction(tr("&Bookmarks Bar"));
     act_bookmarksBar->setCheckable(true);
 
-    QMenu* mnu_tabs = menu->addMenu("Tabs");
-    QAction* act_tabTop = mnu_tabs->addAction("&Top");
+    QMenu* mnu_tabs = menu->addMenu(tr("Tabs"));
+    QAction* act_tabTop = mnu_tabs->addAction(tr("&Top"));
     act_tabTop->setCheckable(true);
-    QAction* act_tabLeft = mnu_tabs->addAction("&Left");
+    QAction* act_tabLeft = mnu_tabs->addAction(tr("&Left"));
     act_tabLeft->setCheckable(true);
-    QAction* act_tabRight = mnu_tabs->addAction("&Right");
+    QAction* act_tabRight = mnu_tabs->addAction(tr("&Right"));
     act_tabRight->setCheckable(true);
-    QAction* act_tabBottom = mnu_tabs->addAction("&Bottom");
+    QAction* act_tabBottom = mnu_tabs->addAction(tr("&Bottom"));
     act_tabBottom->setCheckable(true);
 
-    QMenu* mnu_split = menu->addMenu("Split Mode");
-    QAction* act_horizotnal = mnu_split->addAction("&Horizontal");
+    QMenu* mnu_split = menu->addMenu(tr("Split Mode"));
+    QAction* act_horizotnal = mnu_split->addAction(tr("&Horizontal"));
     act_horizotnal->setCheckable(true);
-    QAction* act_vertical = mnu_split->addAction("&Vertical");
+    QAction* act_vertical = mnu_split->addAction(tr("&Vertical"));
     act_vertical->setCheckable(true);
 
-    act_sidePanel = menu->addAction("Side Panel");
+    act_sidePanel = menu->addAction(tr("Side Panel"));
     act_sidePanel->setCheckable(true);
     connect(act_sidePanel, &QAction::triggered, [=]{
         if (m_browserwindow->sidePanel()->isVisible()) {
@@ -106,14 +106,14 @@ void MenuBar::createViewMenu()
         }
     });
 
-    QAction* act_statusBar = menu->addAction("Status Bar");
+    QAction* act_statusBar = menu->addAction(tr("Status Bar"));
     act_statusBar->setCheckable(true);
     menu->addSeparator();
-    menu->addAction("Zoom &In");
-    menu->addAction("Zoom &Out");
-    menu->addAction("&Reset Zoom");
+    menu->addAction(tr("Zoom &In"));
+    menu->addAction(tr("Zoom &Out"));
+    menu->addAction(tr("&Reset Zoom"));
     menu->addSeparator();
-    menu->addAction("&Page Source");
+    menu->addAction(tr("&Page Source"));
 
     connect(menu, &QMenu::aboutToShow, this, &MenuBar::aboutToShowViewMenu);
 }
@@ -135,51 +135,51 @@ void MenuBar::aboutToShowViewMenu()
 
 void MenuBar::createHistoryMenu()
 {
-    QMenu* menu = addMenu("Hi&story");
-    menu->addAction("&Back");
-    menu->addAction("&Forward");
-    menu->addAction("&Home");
+    QMenu* menu = addMenu(tr("Hi&story"));
+    menu->addAction(tr("&Back"));
+    menu->addAction(tr("&Forward"));
+    menu->addAction(tr("&Home"));
     menu->addSeparator();
-    menu->addAction("&Show All History");
-    menu->addAction("&Most Visited");
-    menu->addAction("&Recently Closed");
+    menu->addAction(tr("&Show All History"));
+    menu->addAction(tr("&Most Visited"));
+    menu->addAction(tr("&Recently Closed"));
 }
 
 void MenuBar::createBookmarksMenu()
 {
-    QMenu* menu = addMenu("&Bookmarks");
-    menu->addAction("Bookmark &This Page");
-    menu->addAction("Bookmark &All Tabs");
+    QMenu* menu = addMenu(tr("&Bookmarks"));
+    menu->addAction(tr("Bookmark &This Page"));
+    menu->addAction(tr("Bookmark &All Tabs"));
     menu->addSeparator();
-    menu->addAction("&Show All Bookmarks");
-    menu->addMenu("&Recent Bookmarks");
-    menu->addMenu("&Most Visited");
+    menu->addAction(tr("&Show All Bookmarks"));
+    menu->addMenu(tr("&Recent Bookmarks"));
+    menu->addMenu(tr("&Most Visited"));
 }
 
 void MenuBar::createToolsMenu()
 {
-    QMenu* menu = addMenu("&Tools");
-    menu->addAction("&Site Info");
+    QMenu* menu = addMenu(tr("&Tools"));
+    menu->addAction(tr("&Site Info"));
     menu->addSeparator();
-    menu->addAction("&Web Debugger");
-    menu->addAction("&Cookie Manager");
-    menu->addAction("&Download Manager");
+    menu->addAction(tr("&Web Debugger"));
+    menu->addAction(tr("&Cookie Manager"));
+    menu->addAction(tr("&Download Manager"));
 
 }
 
 void MenuBar::createHelpMenu()
 {
-    QMenu* menu = addMenu("&Help");
-    menu->addAction("&Technical Support");
-    menu->addAction("&Report Bug...");
-    menu->addAction("&System Information...");
+    QMenu* menu = addMenu(tr("&Help"));
+    menu->addAction(tr("&Technical Support"));
+    menu->addAction(tr("&Report Bug..."));
+    menu->addAction(tr("&System Information..."));
     menu->addSeparator();
-    menu->addAction("About &Crusta");
-    QAction* act_aboutQt = menu->addAction("About &Qt");
+    menu->addAction(tr("About &Crusta"));
+    QAction* act_aboutQt = menu->addAction(tr("About &Qt"));
     connect(act_aboutQt, &QAction::triggered, []{QApplication::aboutQt();});
     menu->addSeparator();
-    menu->addAction("&Follow on Twitter");
-    menu->addAction("&Like a Feature");
+    menu->addAction(tr("&Follow on Twitter"));
+    menu->addAction(tr("&Like a Feature"));
     menu->addSeparator();
-    menu->addAction("Check for &Updates");
+    menu->addAction(tr("Check for &Updates"));
 }

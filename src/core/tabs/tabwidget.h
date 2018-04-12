@@ -26,6 +26,8 @@ class TabWidget: public QTabWidget {
     void keyReleaseEvent(QKeyEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
 
+    const QString TEXT_ON_NEW_TAB = tr("Connecting...");
+
 public:
     TabWidget(QWidget* parent = nullptr, BrowserWindow *browserwindow = nullptr);
     ~TabWidget() {}
