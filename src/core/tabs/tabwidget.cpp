@@ -1,14 +1,15 @@
+#include "../../browserwindow.h"
 #include "tabmacros.h"
 #include "tabwidget.h"
 #include "webtab.h"
 
-#include <iostream>
+#include <QKeyEvent>
 
 #ifndef ADDBUTTON_PADDING
 #define ADDBUTTON_PADDING 4
 #endif
 
-TabWidget::TabWidget(QWidget *parent, QMainWindow* browserwindow):
+TabWidget::TabWidget(QWidget *parent, BrowserWindow* browserwindow):
     QTabWidget(parent)
   , m_browserwindow(browserwindow)
 {
@@ -117,4 +118,24 @@ void TabWidget::closeTab(const int index)
     // TODO: pass if tab was pinned
     m_tabbar->tabRemoved();
     emit tabsChanged();
+
+    if (count() == 0) {
+        m_browserwindow->mainView()->handleTabWidgetClosed();
+        close();
+    }
+}
+
+void TabWidget::keyReleaseEvent(QKeyEvent *event)
+{
+    QTabWidget::keyReleaseEvent(event);
+    switch (event->key()) {
+    // Ctrl + T --> new tab
+    case Qt::Key_T:
+        if (event->modifiers() == Qt::ControlModifier) {
+            addView(QUrl("url"));
+        }
+        break;
+    default:
+        break;
+    }
 }

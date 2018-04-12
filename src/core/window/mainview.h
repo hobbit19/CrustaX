@@ -4,13 +4,17 @@
 #include <QMainWindow>
 #include <QSplitter>
 
+class BrowserWindow;
+
 class MainView : public QSplitter
 {
-    QMainWindow* m_browserwindow;
+    BrowserWindow* m_browserwindow;
+    int m_actualcount;
 public:
-    MainView(QMainWindow* parent = nullptr);
+    MainView(BrowserWindow* parent = nullptr);
     void addView();
     void addView(const QUrl& url);
+    void handleTabWidgetClosed();
 };
 
 #endif // CMAINVIEW_H

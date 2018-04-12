@@ -26,8 +26,10 @@ void MenuBar::createMenus()
 void MenuBar::createFileMenu()
 {
     QMenu* menu = addMenu("&File");
-    menu->addAction("&New Tab");
-    menu->addAction("New &Split Tab");
+    act_splittab = menu->addAction("New &Split Tab");
+    connect(act_splittab, &QAction::triggered, [=]{
+        m_browserwindow->newSplitTab();
+    });
     menu->addAction("New &Window");
     menu->addAction("New &Private Window");
     menu->addSeparator();

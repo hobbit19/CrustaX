@@ -10,6 +10,7 @@ class BrowserWindow;
 class MenuBar: public QMenuBar {
     BrowserWindow* m_browserwindow;
 
+    QAction* act_splittab;
     QAction* act_sidePanel;
     QAction* act_menubar;
 

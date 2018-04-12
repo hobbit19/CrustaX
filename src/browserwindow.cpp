@@ -1,8 +1,9 @@
 #include "browserwindow.h"
 #include "core/window/menubar.h"
 
-#include <QSplitter>
 #include <QDebug>
+#include <QSplitter>
+#include <QUrl>
 
 BrowserWindow::BrowserWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,4 +42,9 @@ MainView* BrowserWindow::mainView()
 SidePanel* BrowserWindow::sidePanel()
 {
     return m_sidepanel;
+}
+
+void BrowserWindow::newSplitTab()
+{
+    m_mainview->addView(QUrl("url"));
 }

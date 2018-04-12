@@ -7,10 +7,12 @@
 #include <QPushButton>
 #include <QTabWidget>
 
+class BrowserWindow;
+
 class TabWidget: public QTabWidget {
     Q_OBJECT
 
-    QMainWindow* m_browserwindow;
+    BrowserWindow* m_browserwindow;
     TabBar* m_tabbar;
     QPushButton* m_newtabbutton;
 
@@ -21,8 +23,10 @@ class TabWidget: public QTabWidget {
     void resizeEvent(QResizeEvent* event);
     void resizeTabbar();
 
+    void keyReleaseEvent(QKeyEvent* event);
+
 public:
-    TabWidget(QWidget* parent = nullptr, QMainWindow *browserwindow = nullptr);
+    TabWidget(QWidget* parent = nullptr, BrowserWindow *browserwindow = nullptr);
     ~TabWidget() {}
     void addView(bool background = false);
     void addView(const QUrl& url, bool background = false);
@@ -34,6 +38,7 @@ public slots:
 
 signals:
     void tabsChanged();
+    void tabWidgetClosed();
 };
 
 #endif // CTABWIDGET_H

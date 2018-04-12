@@ -19,6 +19,7 @@ public:
 
     MainView* mainView();
     SidePanel* sidePanel();
+    void newSplitTab();
 };
 
 #endif // CBROWSERWINDOW_H
