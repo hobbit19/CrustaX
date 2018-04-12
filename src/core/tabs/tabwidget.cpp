@@ -81,6 +81,7 @@ void TabWidget::addNewTabButton()
 {
     m_newtabbutton->setObjectName("add-tab-button");
     m_newtabbutton->setIcon(QIcon(":/res/icons/add.svg"));
+    m_newtabbutton->setToolTip(tr("Add Tab"));
     m_newtabbutton->setFlat(true);
     m_newtabbutton->setFixedSize(TAB_HEIGHT - 2 * ADDBUTTON_PADDING, TAB_HEIGHT - 2 * ADDBUTTON_PADDING);
     m_newtabbutton->move(m_tabbar->getWidth(), m_tabbar->geometry().top() + ADDBUTTON_PADDING);
@@ -144,7 +145,7 @@ void TabWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     QTabWidget::mouseReleaseEvent(event);
 
-    if(event->button() == Qt::MiddleButton) {
+    if(event->button() == Qt::MiddleButton && tabBar()->tabAt(event->pos()) != -1) {
         int index = tabBar()->tabAt(event->pos());
         closeTab(index);
     }

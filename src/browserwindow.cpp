@@ -2,6 +2,7 @@
 #include "core/window/menubar.h"
 
 #include <QDebug>
+#include <QSettings>
 #include <QSplitter>
 #include <QUrl>
 
@@ -18,7 +19,9 @@ BrowserWindow::BrowserWindow(QWidget *parent)
 
     layout()->setContentsMargins(0,0,0,0);
 
-    createSplitter();    
+    createSplitter();
+
+    loadSettings();
 }
 
 BrowserWindow::~BrowserWindow()
@@ -47,4 +50,17 @@ SidePanel* BrowserWindow::sidePanel()
 void BrowserWindow::newSplitTab()
 {
     m_mainview->addView(QUrl("url"));
+}
+
+void BrowserWindow::loadSettings()
+{
+    QSettings settings;
+    settings.beginGroup("browserwindow");
+    if(!settings.value("menubar-visible", true).toBool()) {
+        menuBar()->hide();
+    }
+    if(!settings.value("sidepanel-visible", true).toBool()) {
+        sidePanel()->hide();
+    }
+    settings.endGroup();
 }

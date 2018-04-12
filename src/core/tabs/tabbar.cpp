@@ -1,5 +1,6 @@
 #include "tabbar.h"
-#include <iostream>
+
+#include <QDebug>
 
 TabBar::TabBar(QWidget *parent):
     QTabBar(parent)
@@ -15,6 +16,7 @@ TabBar::TabBar(QWidget *parent):
 QSize TabBar::tabSizeHint(int index) const
 {
     Q_UNUSED(index)
+
     int width = TAB_WIDTH;
     int actualtabbarwidth = m_pinnedcount * PINNED_TAB_WIDTH + m_normalcount * width;
     int maxtabbarwidth = maximumWidth();

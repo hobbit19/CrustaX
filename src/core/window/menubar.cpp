@@ -2,6 +2,7 @@
 #include "menubar.h"
 
 #include <QApplication>
+#include <QSettings>
 
 MenuBar::MenuBar(BrowserWindow *parent):
     QMenuBar(parent)
@@ -68,12 +69,12 @@ void MenuBar::createViewMenu()
     QMenu* mnu_toolbars = menu->addMenu(tr("Toolbars"));
     act_menubar = mnu_toolbars->addAction(tr("&Menubar"));
     act_menubar->setCheckable(true);
-    connect(act_menubar, &QAction::triggered, [=]{
-        if (m_browserwindow->menuBar()->isVisible()) {
-            m_browserwindow->menuBar()->hide();
-        } else {
-            m_browserwindow->menuBar()->show();
-        }
+    connect(act_menubar, &QAction::toggled, [=](bool checked){
+        QSettings settings;
+        settings.beginGroup("browserwindow");
+        settings.setValue("menubar-visible", checked);
+        m_browserwindow->menuBar()->setVisible(checked);
+        settings.endGroup();
     });
     QAction* act_navigationBar = mnu_toolbars->addAction(tr("&Navigation Bar"));
     act_navigationBar->setCheckable(true);
@@ -98,12 +99,12 @@ void MenuBar::createViewMenu()
 
     act_sidePanel = menu->addAction(tr("Side Panel"));
     act_sidePanel->setCheckable(true);
-    connect(act_sidePanel, &QAction::triggered, [=]{
-        if (m_browserwindow->sidePanel()->isVisible()) {
-            m_browserwindow->sidePanel()->hide();
-        } else {
-            m_browserwindow->sidePanel()->show();
-        }
+    connect(act_sidePanel, &QAction::toggled, [=](bool checked){
+        QSettings settings;
+        settings.beginGroup("browserwindow");
+        settings.setValue("sidepanel-visible", checked);
+        m_browserwindow->sidePanel()->setVisible(checked);
+        settings.endGroup();
     });
 
     QAction* act_statusBar = menu->addAction(tr("Status Bar"));

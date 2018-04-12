@@ -1,6 +1,7 @@
 #ifndef CTABBAR_H
 #define CTABBAR_H
 
+#include <QMouseEvent>
 #include <QTabBar>
 
 #define TAB_HEIGHT 36

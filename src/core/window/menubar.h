@@ -8,6 +8,8 @@
 class BrowserWindow;
 
 class MenuBar: public QMenuBar {
+    Q_OBJECT
+
     BrowserWindow* m_browserwindow;
 
     QAction* act_splittab;

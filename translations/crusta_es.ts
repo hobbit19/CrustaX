@@ -257,6 +257,75 @@
     </message>
 </context>
 <context>
+    <name>NavigationBar</name>
+    <message>
+        <source>Time taken to </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload-Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Panel</name>
+    <message>
+        <source>Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SidePanel</name>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open All in Tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Panel Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TabWidget</name>
     <message>
         <source> - Crusta</source>
@@ -265,6 +334,10 @@
     <message>
         <source>Connecting...</source>
         <translation>Conectando ...</translation>
+    </message>
+    <message>
+        <source>Add Tab</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -65,20 +65,20 @@ void SidePanel::createBPanels()
 void SidePanel::showContextMenu(const QPoint& pos)
 {
     QMenu* menu = new QMenu;
-    QAction* act_history = menu->addAction("History");
+    QAction* act_history = menu->addAction(tr("History"));
     act_history->setCheckable(true);
-    QAction* act_bookmarks = menu->addAction("Bookmarks");
+    QAction* act_bookmarks = menu->addAction(tr("Bookmarks"));
     act_bookmarks->setCheckable(true);
-    QAction* act_downloads = menu->addAction("Downloads");
+    QAction* act_downloads = menu->addAction(tr("Downloads"));
     act_downloads->setCheckable(true);
     menu->addSeparator();
-    menu->addAction("Reload All");
-    menu->addAction("Open All in Tabs");
+    menu->addAction(tr("Reload All"));
+    menu->addAction(tr("Open All in Tabs"));
     menu->addSeparator();
     if (m_isPinned) {
-        menu->addAction("Unpin Panel");
+        menu->addAction(tr("Unpin Panel"));
     }
-    menu->addAction("Panel Settings");
+    menu->addAction(tr("Panel Settings"));
     menu->exec(mapToGlobal(pos));
 }
 

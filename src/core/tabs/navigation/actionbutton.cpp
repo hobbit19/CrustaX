@@ -3,7 +3,6 @@
 
 ActionButton::ActionButton(QWidget *parent):
     QToolButton(parent)
-  , m_isPresent(true)
 {
     setObjectName("navigation-actionbutton");
 
@@ -19,9 +18,4 @@ void ActionButton::setFillIcon(const QIcon &icon)
 void ActionButton::setSide(int side)
 {
     setFixedSize(QSize(side, side));
-}
-
-bool ActionButton::isPresent()
-{
-    return m_isPresent;
 }

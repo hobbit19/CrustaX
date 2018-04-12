@@ -12,6 +12,8 @@ class BrowserWindow : public QMainWindow
 
     MainView* m_mainview;
     SidePanel* m_sidepanel;
+
+    void loadSettings();
 public:
     BrowserWindow(QWidget *parent = nullptr);
     ~BrowserWindow();

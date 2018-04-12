@@ -5,6 +5,8 @@
 #include "addressbar.h"
 
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QTime>
 #include <QWidget>
 
 class NavigationBar : public QWidget
@@ -17,8 +19,11 @@ class NavigationBar : public QWidget
     ActionButton* m_topbutton;
     ActionButton* m_reloadstopbutton;
     ActionButton* m_homebutton;
+    QLabel* m_timerbutton;
 
     AddressBar* m_addressbar;
+
+    QTime m_startmillis;
 
     void restoreState();
     void saveState();

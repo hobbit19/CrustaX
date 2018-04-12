@@ -14,7 +14,7 @@ Panel::Panel(QWidget *parent):
     m_vboxlayout->setStretch(0, 0);
     m_vboxlayout->setStretch(1, 1);
     m_vboxlayout->addWidget(m_title);
-    m_title->setText("Panel");
+    m_title->setText(tr("Panel"));
     m_vboxlayout->addWidget(new QWidget());
 
     setLayout(m_vboxlayout);
