@@ -31,7 +31,8 @@ int main(int argc, char *argv[])
 
     if (db.open()) {
         QSqlQuery query;
-        query.exec("CREATE TABLE HISTORY (TITLE TEXT, URL TEXT, TIME TEXT, LOADTIME INTEGER);");
+//        query.exec("DROP TABLE HISTORY");
+        query.exec("CREATE TABLE IF NOT EXISTS HISTORY (FAVICON BLOB, TITLE TEXT, URL TEXT, TIME TEXT, LOADTIME INTEGER, COUNT INTEGER DEFAULT 0)");
     } else {
         // TODO: Handle this case in other files too
         qWarning() << "Could not connect to database";

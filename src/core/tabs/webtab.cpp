@@ -5,6 +5,8 @@
 #include "history/historypage.h"
 
 #include <QApplication>
+#include <QBuffer>
+#include <QPixmap>
 #include <QSqlQuery>
 
 WebTab::WebTab(TabWidget *parent):
@@ -68,14 +70,35 @@ void WebTab::loadUrl(const QUrl& url)
 void WebTab::loadFinished()
 {
     m_navigationbar->loadFinished();
+    QString displayurl = m_webview->url().toString(QUrl::RemoveQuery | QUrl::RemoveFragment);
 
     // add site to history
     QSqlQuery query;
-    query.prepare("INSERT INTO HISTORY (TITLE, URL, TIME, LOADTIME) VALUES (?, ?, ?, ?)");
-    query.addBindValue(m_webview->title());
-    query.addBindValue(m_webview->url().toString());
-    query.addBindValue(QDateTime::currentDateTime().toString());
-    query.addBindValue(m_navigationbar->loadTime());
+    query.prepare("SELECT * FROM HISTORY WHERE URL = ?");
+    query.bindValue(0, displayurl);
+    query.exec();
+    int count = 0;
+    while (query.next()) {
+        count = query.value("COUNT").toInt();
+        // Its expected that this break is never used
+        // ... or you can find a case when it does :P
+        break;
+    }
+    if (count) {
+        query.prepare("UPDATE HISTORY SET TITLE = ?, TIME = ?, LOADTIME = ?, COUNT = ? WHERE URL = ?");
+        query.bindValue(0, m_webview->title());
+        query.bindValue(1, QDateTime::currentDateTime().toString());
+        query.bindValue(2, m_navigationbar->loadTime());
+        query.bindValue(3, count + 1);
+        query.bindValue(4, displayurl);
+    } else {
+        query.prepare("INSERT INTO HISTORY (TITLE, URL, TIME, LOADTIME, COUNT) VALUES (?, ?, ?, ?, ?)");
+        query.bindValue(0, m_webview->title());
+        query.bindValue(1, displayurl);
+        query.bindValue(2, QDateTime::currentDateTime().toString());
+        query.bindValue(3, m_navigationbar->loadTime());
+        query.bindValue(4, 1);
+    }
     query.exec();
 
 //    QString src = InternalScripts::getFramework();
@@ -92,6 +115,21 @@ void WebTab::iconChanged(const QIcon &icon)
 {
     const int index = m_tabwidget->indexOf(this);
     m_tabwidget->setTabIcon(index, icon);
+
+    QByteArray faviconbuffer;
+    QBuffer inBuffer(&faviconbuffer);
+    inBuffer.open(QIODevice::WriteOnly);
+    icon.pixmap(QSize(16,16)).save(&inBuffer, "PNG");
+    inBuffer.close();
+
+    QString displayurl = m_webview->url().toString(QUrl::RemoveQuery | QUrl::RemoveFragment);
+
+    // add site to history
+    QSqlQuery query;
+    query.prepare("UPDATE HISTORY SET FAVICON = ? WHERE URL = ?");
+    query.bindValue(0, faviconbuffer);
+    query.bindValue(1, displayurl);
+    query.exec();
 }
 
 bool WebTab::isPinned()

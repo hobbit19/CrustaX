@@ -50,7 +50,9 @@ SOURCES += \
     src/core/tabs/panel/panel.cpp \
     src/core/tabs/panel/paneltitle.cpp \
     src/core/webview/webpage.cpp \
-    src/core/tabs/history/historypage.cpp
+    src/core/tabs/history/historypage.cpp \
+    src/core/tabs/utils/pagebutton.cpp \
+    src/core/tabs/utils/searchbox.cpp
 
 HEADERS += \
     src/core/tabs/tabwidget.h \
@@ -72,7 +74,9 @@ HEADERS += \
     src/core/tabs/panel/panel.h \
     src/core/tabs/panel/paneltitle.h \
     src/core/webview/webpage.h \
-    src/core/tabs/history/historypage.h
+    src/core/tabs/history/historypage.h \
+    src/core/tabs/utils/pagebutton.h \
+    src/core/tabs/utils/searchbox.h
 
 RESOURCES += \
     resource.qrc

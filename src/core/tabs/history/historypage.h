@@ -5,13 +5,14 @@
 #include <QDate>
 #include <QHBoxLayout>
 #include <QTreeWidget>
+#include <QVBoxLayout>
 #include <QWidget>
 
 class HistoryPage : public QWidget
 {
     Q_OBJECT
 
-    QHBoxLayout* m_hboxlayout;
+    QVBoxLayout* m_vboxlayout;
     QCalendarWidget* m_calender;
     QTreeWidget* m_treewidget;
 
@@ -19,6 +20,7 @@ class HistoryPage : public QWidget
     void loadParticularHistory(const QDate& date);
 public:
     HistoryPage(QWidget *parent = nullptr);
+    QStringList getTopPages();
 };
 
 #endif // CHISTORYPAGE_H
