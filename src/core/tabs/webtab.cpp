@@ -2,6 +2,8 @@
 #include "../../scripts/internalscripts.h"
 #include "webtab.h"
 
+#include "history/historypage.h"
+
 #include <QApplication>
 #include <QSqlQuery>
 
@@ -26,8 +28,9 @@ WebTab::WebTab(TabWidget *parent):
     m_vboxlayout->setContentsMargins(0,0,0,0);
     m_vboxlayout->addWidget(m_navigationbar);
 
-    m_stackedwidget->addWidget(m_speeddial);
+    m_stackedwidget->addWidget(new HistoryPage);
     m_stackedwidget->addWidget(m_splitter);
+    m_stackedwidget->setCurrentIndex(0);
     m_splitter->setContentsMargins(0,0,0,0);
     m_splitter->setMidLineWidth(0);
     m_splitter->addWidget(m_panel);
@@ -35,7 +38,6 @@ WebTab::WebTab(TabWidget *parent):
     m_panel->hide();
     m_splitter->addWidget(m_webview);
     m_splitter->setStretchFactor(0, 0);
-    m_stackedwidget->setCurrentIndex(1);
     m_vboxlayout->addWidget(m_stackedwidget);
 
     setLayout(m_vboxlayout);

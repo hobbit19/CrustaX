@@ -49,7 +49,8 @@ SOURCES += \
     src/scripts/internalscripts.cpp \
     src/core/tabs/panel/panel.cpp \
     src/core/tabs/panel/paneltitle.cpp \
-    src/core/webview/webpage.cpp
+    src/core/webview/webpage.cpp \
+    src/core/tabs/history/historypage.cpp
 
 HEADERS += \
     src/core/tabs/tabwidget.h \
@@ -70,7 +71,8 @@ HEADERS += \
     src/scripts/internalscripts.h \
     src/core/tabs/panel/panel.h \
     src/core/tabs/panel/paneltitle.h \
-    src/core/webview/webpage.h
+    src/core/webview/webpage.h \
+    src/core/tabs/history/historypage.h
 
 RESOURCES += \
     resource.qrc
@@ -79,3 +81,5 @@ TRANSLATIONS += \
     translations/crusta_es.ts \
     translations/crusta_hi.ts \
     translations/crusta_ru.ts
+
+FORMS +=
