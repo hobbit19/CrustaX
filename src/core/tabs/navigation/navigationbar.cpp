@@ -8,6 +8,7 @@
 NavigationBar::NavigationBar(QWidget *parent):
     QWidget(parent)
   , m_height(NAVIGATIONBAR_HEIGHT)
+  , m_millis(-1)
 {
     setObjectName("navigation-navigationbar");
 
@@ -22,15 +23,19 @@ NavigationBar::NavigationBar(QWidget *parent):
 
     m_backbutton->setFillIcon(QIcon(":/res/icons/back.svg"));
     m_backbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_backbutton->setToolTip(tr("Back"));
     m_forwardbutton->setFillIcon(QIcon(":/res/icons/forward.svg"));
     m_forwardbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_forwardbutton->setToolTip(tr("Forward"));
     m_topbutton->setFillIcon(QIcon(":/res/icons/top.svg"));
     m_topbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_topbutton->setToolTip(tr("Top"));
     m_reloadstopbutton->setFillIcon(QIcon(":/res/icons/refresh.svg"));
     m_reloadstopbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
     m_homebutton->setFillIcon(QIcon(":/res/icons/home.svg"));
     m_homebutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
-    m_timerbutton->setToolTip(tr("Time taken to "));
+    m_homebutton->setToolTip(tr("Home"));
+    m_timerbutton->setToolTip(tr("Page load time"));
 
     m_hboxlayout->setContentsMargins(2,2,2,2);
     m_hboxlayout->setSpacing(0);
@@ -181,11 +186,36 @@ void NavigationBar::loadStarted()
 void NavigationBar::loadFinished()
 {
     m_reloadstopbutton->setFillIcon(QIcon(":/res/icons/refresh.svg"));
-    int millis = m_startmillis.msecsTo(QTime::currentTime());
-    m_timerbutton->setText(QString::number((millis/100)/10.0) + "s");
+    m_millis = m_startmillis.msecsTo(QTime::currentTime());
+    m_timerbutton->setText(QString::number((m_millis/100)/10.0) + "s");
 }
 
 void NavigationBar::loadProgress(const int &progress)
 {
     Q_UNUSED(progress);
+}
+
+ActionButton* NavigationBar::backButton()
+{
+    return m_backbutton;
+}
+
+ActionButton* NavigationBar::forwardButton()
+{
+    return m_forwardbutton;
+}
+
+ActionButton* NavigationBar::reloadStopButton()
+{
+    return m_reloadstopbutton;
+}
+
+ActionButton* NavigationBar::homeButton()
+{
+    return m_homebutton;
+}
+
+int NavigationBar::loadTime()
+{
+    return m_millis;
 }

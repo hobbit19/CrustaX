@@ -11,6 +11,8 @@
 
 class NavigationBar : public QWidget
 {
+    Q_OBJECT
+
     int m_height;
     QHBoxLayout* m_hboxlayout;
 
@@ -24,6 +26,7 @@ class NavigationBar : public QWidget
     AddressBar* m_addressbar;
 
     QTime m_startmillis;
+    int m_millis;
 
     void restoreState();
     void saveState();
@@ -34,6 +37,13 @@ public:
     void loadStarted();
     void loadFinished();
     void loadProgress(const int& progress);
+
+    ActionButton* backButton();
+    ActionButton* forwardButton();
+    ActionButton* reloadStopButton();
+    ActionButton* homeButton();
+
+    int loadTime();
 };
 
 #endif // CNAVIGATIONBAR_H

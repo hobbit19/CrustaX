@@ -12,6 +12,8 @@
 
 class Panel : public QWidget
 {
+    Q_OBJECT
+
     QVBoxLayout* m_vboxlayout;
     WebView* m_webview;
     PanelTitle* m_title;

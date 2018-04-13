@@ -3,12 +3,20 @@
 
 WebView::WebView(QWidget *parent):
     QWebEngineView(parent)
+  , m_loading(false)
 {
     setObjectName("webview");
 
     m_page = new WebPage;
 
     setPage(m_page);
+
+    connect(this, &WebView::loadStarted, this, [this]{
+        m_loading = true;
+    });
+    connect(this, &WebView::loadFinished, this, [this]{
+        m_loading = false;
+    });
 }
 
 void WebView::zoomIn()
@@ -40,4 +48,9 @@ void WebView::keyReleaseEvent(QKeyEvent *event)
     default:
         break;
     }
+}
+
+bool WebView::isLoading()
+{
+    return m_loading;
 }

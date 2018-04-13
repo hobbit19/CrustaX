@@ -26,6 +26,7 @@ class WebTab : public QWidget
     void titleChanged(const QString& title);
     void iconChanged(const QIcon& icon);
 
+
     bool m_isPinned;
 public:
     WebTab(TabWidget *parent = nullptr);

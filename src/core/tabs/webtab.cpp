@@ -3,6 +3,7 @@
 #include "webtab.h"
 
 #include <QApplication>
+#include <QSqlQuery>
 
 WebTab::WebTab(TabWidget *parent):
     QWidget(parent)
@@ -44,6 +45,17 @@ WebTab::WebTab(TabWidget *parent):
     connect(m_webview, &WebView::loadProgress, m_navigationbar, &NavigationBar::loadProgress);
     connect(m_webview, &WebView::titleChanged, this, &WebTab::titleChanged);
     connect(m_webview, &WebView::iconChanged, this, &WebTab::iconChanged);
+
+    connect(m_navigationbar->backButton(), &ActionButton::clicked, m_webview, &WebView::back);
+    connect(m_navigationbar->forwardButton(), &ActionButton::clicked, m_webview, &WebView::forward);
+    connect(m_navigationbar->reloadStopButton(), &ActionButton::clicked, this, [this]{
+        if (m_webview->isLoading()) {
+            m_webview->stop();
+        } else {
+            m_webview->reload();
+        }
+    });
+
 }
 
 void WebTab::loadUrl(const QUrl& url)
@@ -55,8 +67,17 @@ void WebTab::loadFinished()
 {
     m_navigationbar->loadFinished();
 
-    QString src = InternalScripts::getFramework();
-    m_webview->page()->runJavaScript(src, [](const QVariant &v) { qDebug() << v.toList(); });
+    // add site to history
+    QSqlQuery query;
+    query.prepare("INSERT INTO HISTORY (TITLE, URL, TIME, LOADTIME) VALUES (?, ?, ?, ?)");
+    query.addBindValue(m_webview->title());
+    query.addBindValue(m_webview->url().toString());
+    query.addBindValue(QDateTime::currentDateTime().toString());
+    query.addBindValue(m_navigationbar->loadTime());
+    query.exec();
+
+//    QString src = InternalScripts::getFramework();
+//    m_webview->page()->runJavaScript(src, [](const QVariant &v) { qDebug() << v.toList(); });
 }
 
 void WebTab::titleChanged(const QString &title)

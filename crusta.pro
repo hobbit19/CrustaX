@@ -8,6 +8,8 @@ QT += core gui
 
 QT += widgets webengine webenginewidgets
 
+QT += sql
+
 TARGET = crusta
 TEMPLATE = app
 
@@ -75,4 +77,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     translations/crusta_es.ts \
+    translations/crusta_hi.ts \
     translations/crusta_ru.ts

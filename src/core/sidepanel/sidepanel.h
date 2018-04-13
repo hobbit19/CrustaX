@@ -7,6 +7,7 @@
 #include <QWidget>
 
 class SidePanel: public QWidget {
+    Q_OBJECT
 
     int m_closePanelWidth;
     int m_openPanelWidth;

@@ -323,32 +323,36 @@
 <context>
     <name>NavigationBar</name>
     <message>
-        <location filename="../src/core/tabs/navigation/navigationbar.cpp" line="+33"/>
-        <source>Time taken to </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+61"/>
+        <location filename="../src/core/tabs/navigation/navigationbar.cpp" line="+26"/>
+        <location line="+73"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-70"/>
+        <location line="+83"/>
         <source>Forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-80"/>
+        <location line="+93"/>
         <source>Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-87"/>
+        <source>Page load time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+100"/>
         <source>Reload-Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-101"/>
+        <location line="+114"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>

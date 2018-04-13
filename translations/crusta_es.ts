@@ -259,10 +259,6 @@
 <context>
     <name>NavigationBar</name>
     <message>
-        <source>Time taken to </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -284,6 +280,10 @@
     </message>
     <message>
         <source>Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page load time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
