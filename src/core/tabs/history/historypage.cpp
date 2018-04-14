@@ -1,3 +1,23 @@
+/**
+ * Crusta X - Qt webbrowser
+ * Copyright (C) 2018 Anmol Gautam <anmol@crustabrowser.com>
+ *
+ * THIS FILE IS A PART OF CRUSTA X
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "historypage.h"
 #include "../utils/pagebutton.h"
 #include "../utils/searchbox.h"
@@ -135,9 +155,13 @@ void HistoryPage::loadParticularHistory(const QDate &date)
         QString title = query.value("TITLE").toString();
         QString address = query.value("URL").toString();
         int count = query.value("COUNT").toInt();
+        QByteArray faviconbuffer = query.value("FAVICON").toByteArray();
+        QPixmap faviconpixmap;
+        faviconpixmap.loadFromData(faviconbuffer);
         QTreeWidgetItem* localitem = new QTreeWidgetItem;
         localitem->setText(0, datetime.time().toString());
         localitem->setText(1, title);
+        localitem->setIcon(1, QIcon(faviconpixmap));
         localitem->setText(2, address);
         localitem->setText(3, QString::number(count));
         item->addChild(localitem);

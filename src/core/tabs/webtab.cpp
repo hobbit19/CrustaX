@@ -1,3 +1,23 @@
+/**
+ * Crusta X - Qt webbrowser
+ * Copyright (C) 2018 Anmol Gautam <anmol@crustabrowser.com>
+ *
+ * THIS FILE IS A PART OF CRUSTA X
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "../cmacros.h"
 #include "../../scripts/internalscripts.h"
 #include "webtab.h"
@@ -32,7 +52,7 @@ WebTab::WebTab(TabWidget *parent):
 
     m_stackedwidget->addWidget(new HistoryPage);
     m_stackedwidget->addWidget(m_splitter);
-    m_stackedwidget->setCurrentIndex(0);
+    m_stackedwidget->setCurrentIndex(1);
     m_splitter->setContentsMargins(0,0,0,0);
     m_splitter->setMidLineWidth(0);
     m_splitter->addWidget(m_panel);
@@ -49,6 +69,7 @@ WebTab::WebTab(TabWidget *parent):
     connect(m_webview, &WebView::loadProgress, m_navigationbar, &NavigationBar::loadProgress);
     connect(m_webview, &WebView::titleChanged, this, &WebTab::titleChanged);
     connect(m_webview, &WebView::iconChanged, this, &WebTab::iconChanged);
+    connect(m_webview, &WebView::urlChanged, m_navigationbar, &NavigationBar::setAddress);
 
     connect(m_navigationbar->backButton(), &ActionButton::clicked, m_webview, &WebView::back);
     connect(m_navigationbar->forwardButton(), &ActionButton::clicked, m_webview, &WebView::forward);
