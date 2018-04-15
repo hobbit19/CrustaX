@@ -34,7 +34,11 @@ AddressBar::AddressBar(QWidget *parent):
 {
     setObjectName("navigation-addressbar");
 
+    addAction(QIcon::fromTheme("edit-copy"), ActionPosition::LeadingPosition);
+    addAction(QIcon::fromTheme("edit-copy"), ActionPosition::TrailingPosition);
+
     m_completer = new QCompleter;
+    connect(this, &AddressBar::returnPressed, this, &AddressBar::handleReturnPressed);
 }
 
 void AddressBar::setAddress(QUrl address)
@@ -57,7 +61,7 @@ void AddressBar::focusOutEvent(QFocusEvent *event)
     setText(m_fulladdres.toString(QUrl::RemoveQuery | QUrl::RemoveFragment));
 }
 
-void AddressBar::returnPressed()
+void AddressBar::handleReturnPressed()
 {
     /**
      * Note that schemes are handled here rather than
@@ -66,6 +70,11 @@ void AddressBar::returnPressed()
      * of stackedwidget in webtab
      */
     QUrl address = QUrl(text());
-    QString sheme = address.scheme();
-
+    QString scheme = address.scheme();
+    if (scheme == "crusta") {
+        emit handleInternalScheme(address);
+    } else {
+        // TODO: loads the url in the webview
+    }
+    m_fulladdres = address;
 }

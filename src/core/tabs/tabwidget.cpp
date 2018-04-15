@@ -100,7 +100,7 @@ void TabWidget::handleCurrentChanged(int index)
 void TabWidget::addNewTabButton()
 {
     m_newtabbutton->setObjectName("add-tab-button");
-    m_newtabbutton->setIcon(QIcon(":/res/icons/add.svg"));
+    m_newtabbutton->setIcon(QIcon::fromTheme("list-add"));
     m_newtabbutton->setToolTip(tr("Add Tab"));
     m_newtabbutton->setFlat(true);
     m_newtabbutton->setFixedSize(TAB_HEIGHT - 2 * ADDBUTTON_PADDING, TAB_HEIGHT - 2 * ADDBUTTON_PADDING);

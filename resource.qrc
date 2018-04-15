@@ -1,11 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/icons/back.svg</file>
-        <file>res/icons/forward.svg</file>
-        <file>res/icons/top.svg</file>
-        <file>res/icons/home.svg</file>
-        <file>res/icons/refresh.svg</file>
-        <file>res/icons/stop.svg</file>
-        <file>res/icons/add.svg</file>
+        <file>src/core/tabs/speeddial/index.html</file>
+        <file>src/core/tabs/speeddial/default.css</file>
+        <file>src/core/tabs/speeddial/speeddial.js</file>
     </qresource>
 </RCC>

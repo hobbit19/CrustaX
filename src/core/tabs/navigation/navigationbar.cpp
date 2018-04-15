@@ -18,12 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../cmacros.h"
 #include "navigationbar.h"
 
 #include <QDebug>
 #include <QMenu>
 #include <QSettings>
+
+#define NAVIGATIONBAR_HEIGHT 30
 
 NavigationBar::NavigationBar(QWidget *parent):
     QWidget(parent)
@@ -41,19 +42,23 @@ NavigationBar::NavigationBar(QWidget *parent):
     m_timerbutton = new QLabel;
     m_addressbar = new AddressBar;
 
-    m_backbutton->setFillIcon(QIcon(":/res/icons/back.svg"));
     m_backbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_backbutton->setFillIcon(QIcon::fromTheme("go-previous"));
     m_backbutton->setToolTip(tr("Back"));
-    m_forwardbutton->setFillIcon(QIcon(":/res/icons/forward.svg"));
+
     m_forwardbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_forwardbutton->setFillIcon(QIcon::fromTheme("go-next"));
     m_forwardbutton->setToolTip(tr("Forward"));
-    m_topbutton->setFillIcon(QIcon(":/res/icons/top.svg"));
+
     m_topbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_topbutton->setFillIcon(QIcon::fromTheme("go-up"));
     m_topbutton->setToolTip(tr("Top"));
-    m_reloadstopbutton->setFillIcon(QIcon(":/res/icons/refresh.svg"));
+
     m_reloadstopbutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
-    m_homebutton->setFillIcon(QIcon(":/res/icons/home.svg"));
+    m_reloadstopbutton->setFillIcon(QIcon::fromTheme("refresh"));
+
     m_homebutton->setSide(NAVIGATIONBAR_HEIGHT - 4);
+    m_homebutton->setFillIcon(QIcon::fromTheme("go-home"));
     m_homebutton->setToolTip(tr("Home"));
     m_timerbutton->setToolTip(tr("Page load time"));
 
@@ -67,6 +72,7 @@ NavigationBar::NavigationBar(QWidget *parent):
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &NavigationBar::customContextMenuRequested, this, &NavigationBar::showContextMenu);
+    connect(m_addressbar, &AddressBar::handleInternalScheme, this, &NavigationBar::redirectInternalSchemeHandler);
 }
 
 void NavigationBar::restoreState()
@@ -199,13 +205,13 @@ void NavigationBar::showContextMenu(const QPoint &pos)
 
 void NavigationBar::loadStarted()
 {
-    m_reloadstopbutton->setFillIcon(QIcon(":/res/icons/stop.svg"));
+    m_reloadstopbutton->setFillIcon(QIcon::fromTheme("process-stop"));
     m_startmillis = QTime::currentTime();
 }
 
 void NavigationBar::loadFinished()
 {
-    m_reloadstopbutton->setFillIcon(QIcon(":/res/icons/refresh.svg"));
+    m_reloadstopbutton->setFillIcon(QIcon::fromTheme("view-refresh"));
     m_millis = m_startmillis.msecsTo(QTime::currentTime());
     m_timerbutton->setText(QString::number((m_millis/100)/10.0) + "s");
 }
@@ -243,4 +249,9 @@ int NavigationBar::loadTime()
 void NavigationBar::setAddress(QUrl address)
 {
     m_addressbar->setAddress(address);
+}
+
+void NavigationBar::redirectInternalSchemeHandler(QUrl address)
+{
+    emit handleInternalScheme(address);
 }

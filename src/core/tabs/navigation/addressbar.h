@@ -36,6 +36,8 @@ public:
 
 class AddressBar: public QLineEdit
 {
+    Q_OBJECT
+
     QCompleter* m_completer;
     QHBoxLayout* m_hboxlayout;
 
@@ -43,10 +45,13 @@ class AddressBar: public QLineEdit
 
     void focusInEvent(QFocusEvent* event);
     void focusOutEvent(QFocusEvent* event);
-    void returnPressed();
+    void handleReturnPressed();
 public:
     AddressBar(QWidget* parent = nullptr);
     void setAddress(QUrl address);
+
+signals:
+    void handleInternalScheme(QUrl address);
 };
 
 #endif // CADDRESSBAR_H

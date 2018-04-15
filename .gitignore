@@ -46,3 +46,8 @@ CMakeLists.txt.user*
 # translations
 *.qm
 *.po
+
+# speeddial - untill some reasonable development progress
+*.js
+*.css
+*.html

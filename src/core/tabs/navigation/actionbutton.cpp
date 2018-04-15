@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../cmacros.h"
 #include "actionbutton.h"
 
 ActionButton::ActionButton(QWidget *parent):
@@ -32,10 +31,11 @@ ActionButton::ActionButton(QWidget *parent):
 void ActionButton::setFillIcon(const QIcon &icon)
 {
     setIcon(icon);
-    setIconSize(QSize(20,20));
+    setIconSize(QSize(m_side - 4, m_side - 4));
 }
 
 void ActionButton::setSide(int side)
 {
-    setFixedSize(QSize(side, side));
+    m_side = side;
+    setFixedSize(QSize(m_side, m_side));
 }

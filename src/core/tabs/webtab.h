@@ -23,7 +23,6 @@
 
 #include "navigation/navigationbar.h"
 #include "panel/panel.h"
-#include "speeddial/speeddial.h"
 #include "tabwidget.h"
 #include "../webview/webview.h"
 
@@ -36,7 +35,6 @@ class WebTab : public QWidget
 {
     TabWidget* m_tabwidget;
     NavigationBar* m_navigationbar;
-    SpeedDial* m_speeddial;
     QSplitter* m_splitter;
     Panel* m_panel;
     WebView* m_webview;

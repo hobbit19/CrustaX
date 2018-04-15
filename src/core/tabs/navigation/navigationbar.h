@@ -65,6 +65,10 @@ public:
 
     int loadTime();
     void setAddress(QUrl address);
+signals:
+    void handleInternalScheme(QUrl address);
+public slots:
+    void redirectInternalSchemeHandler(QUrl address);
 };
 
 #endif // CNAVIGATIONBAR_H

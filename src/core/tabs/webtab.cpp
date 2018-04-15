@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../cmacros.h"
 #include "../../scripts/internalscripts.h"
 #include "webtab.h"
 
@@ -37,14 +36,13 @@ WebTab::WebTab(TabWidget *parent):
     setObjectName("webtab");
 
     m_navigationbar = new NavigationBar;
-    m_speeddial = new SpeedDial;
     m_splitter = new QSplitter;
     m_panel = new Panel;
     m_webview = new WebView;
     m_vboxlayout = new QVBoxLayout;
     m_stackedwidget = new QStackedWidget;
 
-    m_webview->load(QUrl("https://google.com"));
+    m_webview->load(QUrl("qrc:/src/core/tabs/speeddial/index.html"));
 
     m_vboxlayout->addSpacing(0);
     m_vboxlayout->setContentsMargins(0,0,0,0);
@@ -79,6 +77,12 @@ WebTab::WebTab(TabWidget *parent):
         } else {
             m_webview->reload();
         }
+    });
+
+    connect(m_navigationbar, &NavigationBar::handleInternalScheme, this, [this]{
+        /** TODO: handle it (implement a function)
+         */
+        m_stackedwidget->setCurrentIndex(0);
     });
 
 }

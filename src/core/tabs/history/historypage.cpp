@@ -168,6 +168,7 @@ void HistoryPage::loadParticularHistory(const QDate &date)
     }
     m_treewidget->clear();
     m_treewidget->addTopLevelItem(item);
+    item->setExpanded(true);
 }
 
 QStringList HistoryPage::getTopPages()
