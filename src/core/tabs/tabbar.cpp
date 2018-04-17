@@ -19,18 +19,23 @@
  */
 
 #include "tabbar.h"
+#include "tabwidget.h"
+#include "webtab.h"
 
 #include <QDebug>
+#include <QMenu>
 
-TabBar::TabBar(QWidget *parent):
+TabBar::TabBar(TabWidget *parent):
     QTabBar(parent)
   , m_pinnedcount(0)
   , m_normalcount(0)
 {
     setObjectName("tabbar");
 
+    m_parent = parent;
     setDrawBase(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, &TabBar::customContextMenuRequested, this, &TabBar::showContextMenu);
 }
 
 QSize TabBar::tabSizeHint(int index) const
@@ -72,4 +77,13 @@ void TabBar::tabRemoved(bool isPinned)
     } else {
         m_normalcount --;
     }
+}
+
+void TabBar::showContextMenu(const QPoint &pos)
+{
+    int index = tabAt(pos);
+    QMenu* menu = new QMenu;
+    menu->addAction(tr("Reload tab"));
+    menu->addAction(tr("Close tab"));
+    menu->exec(mapToGlobal(pos));
 }

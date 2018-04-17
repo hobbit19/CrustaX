@@ -29,13 +29,19 @@
 #define TAB_WIDTH 200
 #define MINIMUM_TAB_WIDTH 100
 
+class TabWidget;
+
 class TabBar : public QTabBar
 {
+    Q_OBJECT
+
+    TabWidget* m_parent;
     int m_pinnedcount;
     int m_normalcount;
+    void showContextMenu(const QPoint& pos);
 
 public:
-    TabBar(QWidget* parent = nullptr);
+    TabBar(TabWidget* parent = nullptr);
     int getWidth() const;
     void tabAdded();
     void tabRemoved(bool isPinned = false);

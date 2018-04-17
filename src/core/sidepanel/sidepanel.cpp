@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../cmacros.h"
 #include "sidepanel.h"
 
 #include <QMenu>
@@ -79,7 +78,7 @@ void SidePanel::createAPanels()
 void SidePanel::createBPanels()
 {
     m_vboxlayout->addWidget(m_addPanelButton);
-    m_vboxlayout->addWidget(FLEXIBLE_SPACE);
+    m_vboxlayout->addWidget(new QWidget);
 }
 
 void SidePanel::showContextMenu(const QPoint& pos)

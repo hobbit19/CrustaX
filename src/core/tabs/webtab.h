@@ -51,6 +51,9 @@ public:
     void loadUrl(const QUrl& url);
     bool isPinned();
     void setPinned();
+    void back();
+    void forward();
+    void reload();
 };
 
 #endif // WEBTAB_H

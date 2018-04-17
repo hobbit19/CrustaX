@@ -40,7 +40,8 @@ SOURCES += \
     src/core/webview/webpage.cpp \
     src/core/tabs/history/historypage.cpp \
     src/core/tabs/utils/pagebutton.cpp \
-    src/core/tabs/utils/searchbox.cpp
+    src/core/tabs/utils/searchbox.cpp \
+    src/core/tabs/utils/base.cpp
 
 HEADERS += \
     src/core/tabs/tabwidget.h \
@@ -61,7 +62,8 @@ HEADERS += \
     src/core/webview/webpage.h \
     src/core/tabs/history/historypage.h \
     src/core/tabs/utils/pagebutton.h \
-    src/core/tabs/utils/searchbox.h
+    src/core/tabs/utils/searchbox.h \
+    src/core/tabs/utils/base.h
 
 RESOURCES += \
     resource.qrc

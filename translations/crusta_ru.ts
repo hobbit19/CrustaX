@@ -2,9 +2,62 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>HistoryPage</name>
+    <message>
+        <location filename="../src/core/tabs/history/historypage.cpp" line="+48"/>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Visits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Refresh history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Clear all history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Older</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MenuBar</name>
     <message>
-        <location filename="../src/core/window/menubar.cpp" line="+29"/>
+        <location filename="../src/core/window/menubar.cpp" line="+49"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
@@ -323,36 +376,36 @@
 <context>
     <name>NavigationBar</name>
     <message>
-        <location filename="../src/core/tabs/navigation/navigationbar.cpp" line="+26"/>
-        <location line="+73"/>
+        <location filename="../src/core/tabs/navigation/navigationbar.cpp" line="+47"/>
+        <location line="+78"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+83"/>
+        <location line="-74"/>
+        <location line="+87"/>
         <source>Forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+93"/>
+        <location line="-83"/>
+        <location line="+96"/>
         <source>Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-88"/>
         <source>Page load time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+100"/>
+        <location line="+101"/>
         <source>Reload-Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-101"/>
-        <location line="+114"/>
+        <location line="-102"/>
+        <location line="+115"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
@@ -365,15 +418,23 @@
 <context>
     <name>Panel</name>
     <message>
-        <location filename="../src/core/tabs/panel/panel.cpp" line="+17"/>
+        <location filename="../src/core/tabs/panel/panel.cpp" line="+37"/>
         <source>Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchBox</name>
+    <message>
+        <location filename="../src/core/tabs/utils/searchbox.cpp" line="+28"/>
+        <source>Search ...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SidePanel</name>
     <message>
-        <location filename="../src/core/sidepanel/sidepanel.cpp" line="+68"/>
+        <location filename="../src/core/sidepanel/sidepanel.cpp" line="+87"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
@@ -409,9 +470,22 @@
     </message>
 </context>
 <context>
+    <name>TabBar</name>
+    <message>
+        <location filename="../src/core/tabs/tabbar.cpp" line="+86"/>
+        <source>Reload tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TabWidget</name>
     <message>
-        <location filename="../src/core/tabs/tabwidget.cpp" line="+68"/>
+        <location filename="../src/core/tabs/tabwidget.cpp" line="+88"/>
         <location line="+8"/>
         <source> - Crusta</source>
         <translation> - Краста</translation>
@@ -422,7 +496,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/tabs/tabwidget.h" line="+29"/>
+        <location filename="../src/core/tabs/tabwidget.h" line="+49"/>
         <source>Connecting...</source>
         <translation>Подключение ...</translation>
     </message>

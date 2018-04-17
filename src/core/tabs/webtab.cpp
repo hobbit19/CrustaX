@@ -69,15 +69,9 @@ WebTab::WebTab(TabWidget *parent):
     connect(m_webview, &WebView::iconChanged, this, &WebTab::iconChanged);
     connect(m_webview, &WebView::urlChanged, m_navigationbar, &NavigationBar::setAddress);
 
-    connect(m_navigationbar->backButton(), &ActionButton::clicked, m_webview, &WebView::back);
-    connect(m_navigationbar->forwardButton(), &ActionButton::clicked, m_webview, &WebView::forward);
-    connect(m_navigationbar->reloadStopButton(), &ActionButton::clicked, this, [this]{
-        if (m_webview->isLoading()) {
-            m_webview->stop();
-        } else {
-            m_webview->reload();
-        }
-    });
+    connect(m_navigationbar->backButton(), &ActionButton::clicked, this, &WebTab::back);
+    connect(m_navigationbar->forwardButton(), &ActionButton::clicked, this, &WebTab::forward);
+    connect(m_navigationbar->reloadStopButton(), &ActionButton::clicked, this, &WebTab::reload);
 
     connect(m_navigationbar, &NavigationBar::handleInternalScheme, this, [this]{
         /** TODO: handle it (implement a function)
@@ -165,4 +159,23 @@ bool WebTab::isPinned()
 void  WebTab::setPinned()
 {
     m_isPinned = true;
+}
+
+void WebTab::back()
+{
+    m_webview->back();
+}
+
+void WebTab::forward()
+{
+    m_webview->forward();
+}
+
+void WebTab::reload()
+{
+    if (m_webview->isLoading()) {
+        m_webview->stop();
+    } else {
+        m_webview->reload();
+    }
 }

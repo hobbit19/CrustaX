@@ -25,6 +25,8 @@
 
 class SearchBox: public QLineEdit
 {
+    Q_OBJECT
+
 public:
     SearchBox(QWidget* parent = nullptr);
 };

@@ -2,6 +2,49 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="es">
 <context>
+    <name>HistoryPage</name>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Visits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear all history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Older</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MenuBar</name>
     <message>
         <source>&amp;File</source>
@@ -295,6 +338,13 @@
     </message>
 </context>
 <context>
+    <name>SearchBox</name>
+    <message>
+        <source>Search ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SidePanel</name>
     <message>
         <source>History</source>
@@ -322,6 +372,17 @@
     </message>
     <message>
         <source>Panel Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabBar</name>
+    <message>
+        <source>Reload tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close tab</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
