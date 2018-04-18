@@ -23,6 +23,7 @@
 
 #include <QApplication>
 #include <QSettings>
+#include <QUrl>
 
 MenuBar::MenuBar(BrowserWindow *parent):
     QMenuBar(parent)
@@ -199,7 +200,10 @@ void MenuBar::createHelpMenu()
     QAction* act_aboutQt = menu->addAction(tr("About &Qt"));
     connect(act_aboutQt, &QAction::triggered, []{QApplication::aboutQt();});
     menu->addSeparator();
-    menu->addAction(tr("&Follow on Twitter"));
+    QAction* act_follow = menu->addAction(tr("&Follow on Twitter"));
+    connect(act_follow, &QAction::triggered, this, [=]{
+        m_browserwindow->mainView()->addView(QUrl("https://twitter.com/crustabrowser"));
+    });
     menu->addAction(tr("&Like a Feature"));
     menu->addSeparator();
     menu->addAction(tr("Check for &Updates"));

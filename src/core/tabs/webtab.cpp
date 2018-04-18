@@ -83,7 +83,8 @@ WebTab::WebTab(TabWidget *parent):
 
 void WebTab::loadUrl(const QUrl& url)
 {
-    Q_UNUSED(url);
+    m_webview->load(url);
+    // TODO: emit
 }
 
 void WebTab::loadFinished()
