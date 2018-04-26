@@ -71,6 +71,9 @@ WebTab::WebTab(TabWidget *parent):
 
     connect(m_navigationbar->backButton(), &ActionButton::clicked, this, &WebTab::back);
     connect(m_navigationbar->forwardButton(), &ActionButton::clicked, this, &WebTab::forward);
+    connect(m_navigationbar->topButton(), &ActionButton::clicked, m_webview, [=]{
+        m_webview->scrollToPos(QPoint(0,0));
+    });
     connect(m_navigationbar->reloadStopButton(), &ActionButton::clicked, this, &WebTab::reload);
 
     connect(m_navigationbar, &NavigationBar::handleInternalScheme, this, [this]{

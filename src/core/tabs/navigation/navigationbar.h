@@ -60,6 +60,7 @@ public:
 
     ActionButton* backButton();
     ActionButton* forwardButton();
+    ActionButton* topButton();
     ActionButton* reloadStopButton();
     ActionButton* homeButton();
 

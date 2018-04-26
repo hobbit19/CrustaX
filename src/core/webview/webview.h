@@ -36,6 +36,7 @@ public:
     void zoomIn();
     void zoomOut();
     bool isLoading();
+    void scrollToPos(const QPoint& pos);
 };
 
 #endif // CWEBVIEW_H

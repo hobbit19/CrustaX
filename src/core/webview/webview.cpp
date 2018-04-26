@@ -74,3 +74,8 @@ bool WebView::isLoading()
 {
     return m_loading;
 }
+
+void WebView::scrollToPos(const QPoint &pos)
+{
+    page()->runJavaScript(QString("window.scrollTo(%1, %2);").arg(pos.x()).arg(pos.y()));
+}

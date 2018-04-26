@@ -33,7 +33,7 @@ MainView::MainView(BrowserWindow *parent):
     setObjectName("mainview");
 
     setContentsMargins(0,0,0,0);
-    addView(QUrl("url"));
+    addView(QUrl("https://google.com"));
 }
 
 void MainView::addView()

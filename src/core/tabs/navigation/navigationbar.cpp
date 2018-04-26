@@ -231,6 +231,11 @@ ActionButton* NavigationBar::forwardButton()
     return m_forwardbutton;
 }
 
+ActionButton* NavigationBar::topButton()
+{
+    return m_topbutton;
+}
+
 ActionButton* NavigationBar::reloadStopButton()
 {
     return m_reloadstopbutton;

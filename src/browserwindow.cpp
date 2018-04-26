@@ -55,6 +55,7 @@ void BrowserWindow::createSplitter()
     splitter->addWidget(m_sidepanel);
     splitter->addWidget(m_mainview);
     splitter->setMidLineWidth(0);
+    splitter->setLineWidth(0);
     setCentralWidget(splitter);
 }
 
