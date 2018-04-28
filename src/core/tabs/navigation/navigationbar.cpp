@@ -72,7 +72,8 @@ NavigationBar::NavigationBar(QWidget *parent):
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &NavigationBar::customContextMenuRequested, this, &NavigationBar::showContextMenu);
-    connect(m_addressbar, &AddressBar::handleInternalScheme, this, &NavigationBar::redirectInternalSchemeHandler);
+    connect(m_addressbar, &AddressBar::handleInternalScheme, this,[=](QUrl address) {emit handleInternalScheme(address);});
+    connect(m_addressbar, &AddressBar::handleUrlRequested, this, [=](QUrl address) {emit handleUrlRequest(address);});
 }
 
 void NavigationBar::restoreState()
@@ -254,9 +255,4 @@ int NavigationBar::loadTime()
 void NavigationBar::setAddress(QUrl address)
 {
     m_addressbar->setAddress(address);
-}
-
-void NavigationBar::redirectInternalSchemeHandler(QUrl address)
-{
-    emit handleInternalScheme(address);
 }

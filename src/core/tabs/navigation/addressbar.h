@@ -52,6 +52,7 @@ public:
 
 signals:
     void handleInternalScheme(QUrl address);
+    void handleUrlRequested(QUrl address);
 };
 
 #endif // CADDRESSBAR_H

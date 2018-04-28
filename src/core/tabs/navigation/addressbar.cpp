@@ -73,8 +73,11 @@ void AddressBar::handleReturnPressed()
     QString scheme = address.scheme();
     if (scheme == "crusta") {
         emit handleInternalScheme(address);
-    } else {
-        // TODO: loads the url in the webview
+    } else if (scheme == "http" || scheme == "https") {
+        emit handleUrlRequested(address);
+    } else if (scheme.isNull()) {
+        //! TODO: Implement Default search engine manager
+        emit handleUrlRequested(address);
     }
     m_fulladdres = address;
 }

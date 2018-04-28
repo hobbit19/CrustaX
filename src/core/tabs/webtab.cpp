@@ -76,11 +76,12 @@ WebTab::WebTab(TabWidget *parent):
     });
     connect(m_navigationbar->reloadStopButton(), &ActionButton::clicked, this, &WebTab::reload);
 
-    connect(m_navigationbar, &NavigationBar::handleInternalScheme, this, [this]{
-        /** TODO: handle it (implement a function)
-         */
+    connect(m_navigationbar, &NavigationBar::handleInternalScheme, this, [=](QUrl address) {
+        Q_UNUSED(address)
         m_stackedwidget->setCurrentIndex(0);
     });
+
+    connect(m_navigationbar, &NavigationBar::handleUrlRequest, this, &WebTab::loadUrl);
 
 }
 

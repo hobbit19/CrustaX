@@ -68,8 +68,7 @@ public:
     void setAddress(QUrl address);
 signals:
     void handleInternalScheme(QUrl address);
-public slots:
-    void redirectInternalSchemeHandler(QUrl address);
+    void handleUrlRequest(QUrl address);
 };
 
 #endif // CNAVIGATIONBAR_H
