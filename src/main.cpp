@@ -19,9 +19,11 @@
  */
 
 #include "browserwindow.h"
+#include "crxconstants.h"
 
 #include <QApplication>
 #include <QDebug>
+#include <QDir>
 #include <QFile>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -43,15 +45,18 @@ int main(int argc, char *argv[])
 //    translator.load("../translations/crusta_ru");
 //    a.installTranslator(&translator);
 
+    if (!QDir(CrxConstants::storagePath()).exists()) {
+        QDir().mkdir(CrxConstants::storagePath());
+    }
+
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("crusta");
-    db.setDatabaseName("crustadb");
+    db.setDatabaseName(QDir::homePath() + "/.crustax/.crustadb");
     db.setUserName("crusta");
     db.setPassword("root");
 
     if (db.open()) {
         QSqlQuery query;
-//        query.exec("DROP TABLE HISTORY");
         query.exec("CREATE TABLE IF NOT EXISTS HISTORY (FAVICON BLOB, TITLE TEXT, URL TEXT, TIME TEXT, LOADTIME INTEGER, COUNT INTEGER DEFAULT 0)");
     } else {
         // TODO: Handle this case in other files too

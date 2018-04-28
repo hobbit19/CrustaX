@@ -41,7 +41,8 @@ SOURCES += \
     src/core/tabs/history/historypage.cpp \
     src/core/tabs/utils/pagebutton.cpp \
     src/core/tabs/utils/searchbox.cpp \
-    src/core/tabs/utils/base.cpp
+    src/core/tabs/utils/base.cpp \
+    src/crxconstants.cpp
 
 HEADERS += \
     src/core/tabs/tabwidget.h \
@@ -63,7 +64,8 @@ HEADERS += \
     src/core/tabs/history/historypage.h \
     src/core/tabs/utils/pagebutton.h \
     src/core/tabs/utils/searchbox.h \
-    src/core/tabs/utils/base.h
+    src/core/tabs/utils/base.h \
+    src/crxconstants.h
 
 RESOURCES += \
     resource.qrc
